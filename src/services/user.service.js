@@ -11,6 +11,12 @@ const createUser = async (userBody) => {
   if (await User.isEmailTaken(userBody.email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
+  if (await User.isNumberPhoneTaken(userBody.numberPhone)){
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Number phone already taken');
+  }
+  if(await  User.isIdentityCardTaken(userBody.identityCard)){
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Identity card already taken');
+  }
   return User.create(userBody);
 };
 
@@ -24,8 +30,7 @@ const createUser = async (userBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryUsers = async (filter, options) => {
-  const users = await User.paginate(filter, options);
-  return users;
+  return await User.paginate(filter, options);
 };
 
 /**
