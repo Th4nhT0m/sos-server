@@ -6,7 +6,7 @@ const { roles } = require('../config/roles');
 
 const userSchema = mongoose.Schema(
   {
-    fullName: {
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema(
       required:true
     },
     Avatar: String,
-    Sex:{
+    sex:{
       type: String,
       enum: ['Male','Female']
     },
@@ -85,6 +85,28 @@ userSchema.plugin(paginate);
 userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
   const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
   return !!user;
+};
+
+/**
+ * Check if numberPhone is taken
+ * @param {string} numberPhone - The user's numberPhone
+ * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
+ * @returns {Promise<boolean>}
+ */
+userSchema.statics.isNumberPhoneTaken = async function (numberPhone, excludeUserId) {
+  const nPhone = await this.findOne({ numberPhone, _id: { $ne: excludeUserId } });
+  return !!nPhone;
+};
+
+/**
+ * Check if Identity Card is taken
+ * @param {string} identityCard - The user's identityCard
+ * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
+ * @returns {Promise<boolean>}
+ */
+userSchema.statics.isIdentityCardTaken = async function (identityCard, excludeUserId) {
+  const card = await this.findOne({ identityCard, _id: { $ne: excludeUserId } });
+  return !!card;
 };
 
 /**
