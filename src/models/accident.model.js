@@ -1,11 +1,16 @@
 const mongoose = require('mongoose')
+const { object } = require('joi');
+const { toJSON, paginate } = require('./plugins');
 const Schema = mongoose.Schema
 
 const accidentSchema = new Schema({
 
   user: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
     ref:'User'
+  },
+  nameAccident: {
+    type: String,
   },
   status: {
     type: String,
@@ -19,14 +24,20 @@ const accidentSchema = new Schema({
   },
 
   people: {
-    type: Number,
+    type: Number
   },
   timeStart: {
     type: Date,
     default: Date.now
   }
 
-})
-const accident = mongoose.model('accident',accidentSchema);
+});
+/**
+ * @typedef Accident
+ */
+accidentSchema.plugin(toJSON);
+accidentSchema.plugin(paginate);
 
-module.exports = accident
+const Accident = mongoose.model('Accident',accidentSchema);
+
+module.exports = Accident

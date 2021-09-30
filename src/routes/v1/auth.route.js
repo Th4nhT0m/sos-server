@@ -40,6 +40,11 @@ module.exports = router;
  *               - name
  *               - email
  *               - password
+ *               - identityCard
+ *               - numberPhone
+ *               - address
+ *               - sex
+ *               - age
  *             properties:
  *               name:
  *                 type: string
@@ -52,10 +57,26 @@ module.exports = router;
  *                 format: password
  *                 minLength: 8
  *                 description: At least one number and one letter
+ *               identityCard:
+ *                  type: string
+ *               numberPhone:
+ *                  type: string
+ *               address:
+ *                  type: string
+ *               sex:
+ *                  type: string
+ *                  enum: [Male,Female]
+ *               age:
+ *                  type: date
  *             example:
  *               name: fake name
- *               email: fake@example.com
- *               password: password1
+ *               email: pvphat12c6ntt@gmail.com
+ *               password: passwords1
+ *               identityCard: 123456789452
+ *               numberPhone: 1253469872
+ *               address: tay ninh
+ *               sex: Male
+ *               age: 09-09-2021
  *     responses:
  *       "201":
  *         description: Created
