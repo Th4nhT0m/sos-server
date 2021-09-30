@@ -19,6 +19,27 @@ components:
         name: fake name
         role: user
 
+    Accident:
+      type: object
+      properties:
+        id:
+          type: string
+        nameAccident:
+          type: string
+        status:
+          type: string
+          enum: [ danger, normal ]
+        content:
+          type: string
+        people:
+          type: number
+      example:
+        id: 4ebac5349s4ba4139806c112
+        nameAccident: be banh
+        status: normal
+        content: hu xe
+        people: 2
+
     Token:
       type: object
       properties:
