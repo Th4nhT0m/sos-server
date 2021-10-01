@@ -46,6 +46,11 @@ module.exports = router;
  *               - email
  *               - password
  *               - role
+ *               - identityCard
+ *               - numberPhone
+ *               - address
+ *               - sex
+ *               - dob
  *             properties:
  *               name:
  *                 type: string
@@ -61,11 +66,27 @@ module.exports = router;
  *               role:
  *                  type: string
  *                  enum: [user, admin]
+ *               identityCard:
+ *                 type: string
+ *               numberPhone:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               sex:
+ *                 type: string
+ *                 enum: [Male, Female, Other]
+ *               dob:
+ *                 type: date
  *             example:
- *               name: fake name
+ *               name: fakename
  *               email: fake@example.com
  *               password: password1
  *               role: user
+ *               identityCard: "125647859632"
+ *               numberPhone: "0253468952"
+ *               address: "Tây ninh"
+ *               sex: Male
+ *               dob: 09-09-2021
  *     responses:
  *       "201":
  *         description: Created
@@ -207,10 +228,26 @@ module.exports = router;
  *                 format: password
  *                 minLength: 8
  *                 description: At least one number and one letter
+ *               identityCard:
+ *                 type: string
+ *               numberPhone:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               sex:
+ *                 type: string
+ *                 enum: [Male, Female, Other]
+ *               dob:
+ *                 type: date
  *             example:
  *               name: fake name
  *               email: fake@example.com
  *               password: password1
+ *               identityCard: "125647859632"
+ *               numberPhone: "0253468952"
+ *               address: "Tây ninh"
+ *               sex: Male
+ *               dob: 09-09-2021
  *     responses:
  *       "200":
  *         description: OK

@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema(
     Avatar: String,
     sex:{
       type: String,
-      enum: ['Male','Female']
+      enum: ['Male', 'Female', 'Other']
     },
     email: {
       type: String,
@@ -59,7 +59,7 @@ const userSchema = mongoose.Schema(
       enum: roles,
       default: 'user',
     },
-    age:{
+    dob:{
       type: Date
     },
     isEmailVerified: {
