@@ -11,7 +11,7 @@ const createUser = {
     numberPhone: Joi.string().required().custom(numberPhone),
     address: Joi.string().required(),
     sex: Joi.string().required().valid('Male','Female'),
-    age: Joi.date(),
+    dob: Joi.date(),
   }),
 };
 
@@ -43,8 +43,8 @@ const updateUser = {
       identityCard: Joi.string().required(),
       numberPhone: Joi.string().required(),
       address: Joi.string().required(),
-      sex: Joi.string().required().valid('Male','Female'),
-      age: Joi.date(),
+      sex: Joi.string().required().valid('Male','Female','Other'),
+      dob: Joi.date(),
     })
     .min(1),
 };

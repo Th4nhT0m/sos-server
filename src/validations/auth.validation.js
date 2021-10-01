@@ -9,8 +9,8 @@ const register = {
     identityCard: Joi.string().required().custom(identityCard),
     numberPhone: Joi.string().required().custom(numberPhone),
     address: Joi.string().required(),
-    sex: Joi.string().required().valid('Male','Female'),
-    age: Joi.date(),
+    sex: Joi.string().required().valid('Male', 'Female', 'Other'),
+    dob: Joi.date(),
   }),
 };
 

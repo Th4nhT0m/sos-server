@@ -44,7 +44,7 @@ module.exports = router;
  *               - numberPhone
  *               - address
  *               - sex
- *               - age
+ *               - dob
  *             properties:
  *               name:
  *                 type: string
@@ -65,18 +65,18 @@ module.exports = router;
  *                  type: string
  *               sex:
  *                  type: string
- *                  enum: [Male,Female]
- *               age:
+ *                  enum: [Male,Female,Other]
+ *               dob:
  *                  type: date
  *             example:
  *               name: fake name
  *               email: pvphat12c6ntt@gmail.com
  *               password: passwords1
- *               identityCard: 123456789452
- *               numberPhone: 1253469872
+ *               identityCard: "123456789452"
+ *               numberPhone: "1253469872"
  *               address: tay ninh
  *               sex: Male
- *               age: 09-09-2021
+ *               dob: 09-09-2021
  *     responses:
  *       "201":
  *         description: Created
