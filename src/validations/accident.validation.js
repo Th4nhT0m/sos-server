@@ -29,19 +29,19 @@ const getAccident = {
   })
 };
 
-const updateAccidents = {
+const updateAccident = {
   params: Joi.object().keys({
       accidentId: Joi.required().custom(objectId),
   }),
-  body: Joi.object().keys({  body: Joi.object().keys({
+  body: Joi.object().keys({
       nameAccident: Joi.string(),
       status: Joi.string().valid('danger', 'normal'),
       content: Joi.string(),
       locationName: Joi.string(),
       people: Joi.number(),
     })
-      .min(1),})
-}
+      .min(1),
+};
 
 const deleteAccident = {
   params: Joi.object().keys({
@@ -53,7 +53,7 @@ module.exports = {
   createAccident,
   getAccidents,
   getAccident,
-  updateAccidents,
+  updateAccident,
   deleteAccident
 };
 
