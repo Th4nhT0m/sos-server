@@ -25,7 +25,7 @@ const getAccident = catchAsync(async (req, res) => {
 })
 
 const updateAccident = catchAsync(async (req, res) => {
-  const accident = await accidentServer.updateUserById(req.params.accidentId, req.body);
+  const accident = await accidentServer.updateAccidentById(req.params.accidentId, req.body);
   res.send(accident);
 });
 

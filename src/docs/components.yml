@@ -40,6 +40,30 @@ components:
         content: hu xe
         people: 2
 
+    DetailsAccident:
+        type: object
+        properties:
+          id:
+            type: string
+          user:
+            type: string
+          accident:
+            type: string
+          statusLog:
+            type: string
+            enum: [Start,Supporting,End]
+          content:
+            type: string
+          timeOut:
+            type: date
+        example:
+          id: 4ebac5349s4ba4139806c112
+          user: 615704b89e78551a588d220f
+          accident: 615703b8c5678d1ea8f597af
+          statusLog: Start
+          content: hu xe
+          timeOut: 09-09-2021
+
     Token:
       type: object
       properties:

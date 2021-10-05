@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { object } = require('joi');
 const { toJSON, paginate } = require('./plugins');
 const Schema = mongoose.Schema
 
@@ -39,5 +38,4 @@ accidentSchema.plugin(toJSON);
 accidentSchema.plugin(paginate);
 
 const Accident = mongoose.model('Accident',accidentSchema);
-
 module.exports = Accident

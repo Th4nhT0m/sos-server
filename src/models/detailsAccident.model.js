@@ -1,21 +1,23 @@
 const mongoose = require('mongoose')
+const { toJSON, paginate } = require('./plugins');
 const Schema = mongoose.Schema
 
 const detailsAccidentSchema = new Schema({
 
   user: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
     ref:'User'
   },
 
   accident: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.SchemaTypes.ObjectId,
     ref: 'accidents'
   },
 
   statusLog: {
     type: String,
-    enum:['Start','Supporting','End']
+    enum:['Start','Supporting','End'],
+    default: 'Start'
   },
 
   content:{
@@ -31,6 +33,13 @@ const detailsAccidentSchema = new Schema({
     default: Date.now
   }
 
-})
-const DetailsAccident = mongoose.model('detailsAccident',detailsAccidentSchema);
+});
+/**
+ * @typedef detailsAccident
+ */
+detailsAccidentSchema.plugin(toJSON);
+detailsAccidentSchema.plugin(paginate);
+
+
+const DetailsAccident = mongoose.model('DetailsAccident',detailsAccidentSchema);
 module.exports = DetailsAccident;

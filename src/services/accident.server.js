@@ -2,7 +2,6 @@ const httpStatus = require('http-status');
 const { Accident } = require('../models');
 const ApiError = require('../utils/ApiError');
 
-
 /**
  * Create a accident
  * @param {Object} accidentBody
@@ -38,7 +37,7 @@ const getAccidentById = async (id) =>{
 /**
  * Get accident by status
  * @param {string}  status
- * @returns {Promise<accident>}
+ * @returns {Promise<Accident>}
  */
 const getAccidentByStatus = async (status) =>{
   return Accident.findOne({status});
