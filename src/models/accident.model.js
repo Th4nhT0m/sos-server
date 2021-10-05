@@ -18,9 +18,12 @@ const accidentSchema = new Schema({
   content: {
     type: String
   },
+
   locationName: {
     type: String
   },
+
+
 
   people: {
     type: Number

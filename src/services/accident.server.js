@@ -61,7 +61,7 @@ const deleteAccidentById = async (accidentId) => {
  * update accident bu id
  * @param {ObjectId} accidentId
  * @param {Object} updateBody
- * @returns {Promise<User>}
+ * @returns {Promise<Accident>}
  */
 const updateAccidentById = async (accidentId, updateBody) => {
   const accident = await getAccidentById(accidentId);
