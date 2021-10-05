@@ -1,13 +1,13 @@
 const httpStatus = require('http-status');
-const ApiError = require('../utils/ApiError');
 const { DetailsAccident } = require('../models');
+const ApiError = require('../utils/ApiError');
 
 /**
- * Create a detailsAccident
+ * Create a details accident
  * @param {Object} detailsAccidentBody
  * @returns {Promise<DetailsAccident>}
  */
-const createDetailsAccident = async (detailsAccidentBody) => {
+const createDAccident = async (detailsAccidentBody) => {
   return DetailsAccident.create(detailsAccidentBody);
 };
 
@@ -20,26 +20,25 @@ const createDetailsAccident = async (detailsAccidentBody) => {
  * @param {number} [options.page] - Current page (default = 1)
  * @returns {Promise<QueryResult>}
  */
-const queryDetailsAccident = async (filter,options) => {
+const queryDAccident = async (filter, options) => {
   return await DetailsAccident.paginate(filter,options);
 }
 
-//BUG *****
 /**
- * GET details details accident
+ * Get accident by id
  * @param {ObjectId} id
- * @returns {Promise<DetailsAccident>}
+ * @returns {Promise<Accident>}
  */
-const getDetailsAccidentById = async (id)=>{
+const getDAccidentById = async (id) =>{
   return DetailsAccident.findById(id);
 };
 
 /**
- * Get accident by status Log
- * @param {string} statusLog
+ * Get details accident by statusLog
+ * @param {string}  statusLog
  * @returns {Promise<DetailsAccident>}
  */
-const getDetailsAccidentByStatus = async (statusLog) =>{
+const getDAccidentByStatus = async (statusLog) =>{
   return DetailsAccident.findOne({statusLog});
 }
 
@@ -48,13 +47,13 @@ const getDetailsAccidentByStatus = async (statusLog) =>{
  * @param {ObjectId} detailsAccidentId
  * @returns {Promise<DetailsAccident>}
  */
-const deleteDetailsAccidentById = async (detailsAccidentId) => {
-  const detailsAccident = await getDetailsAccidentById(detailsAccidentId);
-  if(!detailsAccident){
-    throw new ApiError(httpStatus.NOT_FOUND,'details accident not found');
+const deleteAccidentById = async (detailsAccidentId) => {
+  const deleteDAccident = await getDAccidentById(detailsAccidentId);
+  if(!deleteDAccident){
+    throw new ApiError(httpStatus.NOT_FOUND,'Accident not found');
   }
-  await detailsAccident.remove();
-  return detailsAccident;
+  await deleteDAccident.remove();
+  return deleteDAccident;
 };
 
 /**
@@ -63,21 +62,22 @@ const deleteDetailsAccidentById = async (detailsAccidentId) => {
  * @param {Object} updateBody
  * @returns {Promise<DetailsAccident>}
  */
-const updateDetailsAccident = async (detailsAccidentId, updateBody) => {
-  const DAUpdate = await getDetailsAccidentById(detailsAccidentId);
-  if (!DAUpdate) {
-    throw new ApiError(httpStatus.NOT_FOUND,'Details accident not found');
+const updateAccidentById = async (detailsAccidentId, updateBody) => {
+  const updateDAccident = await getDAccidentById(detailsAccidentId);
+  if (!updateDAccident) {
+    throw new ApiError(httpStatus.NOT_FOUND,'User not found');
   }
-  Object.assign(DAUpdate, updateBody);
-  await  DAUpdate.save();
-  return DAUpdate;
+  Object.assign(updateDAccident, updateBody);
+  await  updateDAccident.save();
+  return updateDAccident;
 }
 
 module.exports = {
-  createDetailsAccident,
-  queryDetailsAccident,
-  getDetailsAccidentById,
-  deleteDetailsAccidentById,
-  updateDetailsAccident,
-  getDetailsAccidentByStatus
-}
+  createDAccident,
+  getDAccidentById,
+  getDAccidentByStatus,
+  deleteAccidentById,
+  updateAccidentById,
+  queryDAccident
+};
+

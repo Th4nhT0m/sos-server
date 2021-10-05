@@ -163,7 +163,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /detailsAccidents:/{id}:
+ * /detailsAccidents/{id}:
  *   get:
  *     summary: Get a details accident
  *     description: Logged in users can fetch only their own details accident information
