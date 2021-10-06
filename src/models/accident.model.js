@@ -15,24 +15,33 @@ const accidentSchema = new Schema({
     type: String,
     enum: ['danger','normal']
   },
+
   content: {
-    type: String
+    type: String,
+    default: 'Cần được hỗ trợ'
   },
 
   locationName: {
     type: String
   },
 
+  latitude: {
+    type: String,
+  },
 
+  longitude: {
+    type: String,
+  },
 
   people: {
-    type: Number
+    type: Number,
+    default: 1,
   },
+
   timeStart: {
     type: Date,
     default: Date.now
   }
-
 });
 /**
  * @typedef Accident
