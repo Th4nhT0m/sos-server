@@ -46,6 +46,8 @@ module.exports = router;
  *               - status
  *               - content
  *               - locationName
+ *               - latitude
+ *               - longitude
  *               - people
  *             properties:
  *               nameAccident:
@@ -56,7 +58,11 @@ module.exports = router;
  *               content:
  *                 type: string
  *               locationName:
- *                 type: Object
+ *                 type: latitude
+ *               latitude:
+ *                 type: string
+ *               longitude:
+ *                 type: string
  *               people:
  *                 type: Number
  *             example:
@@ -64,6 +70,8 @@ module.exports = router;
  *               status: danger
  *               content: card
  *               locationName: nga
+ *               latitude: "70.235122"
+ *               longitude: "75.235122"
  *               people: 2
  *     responses:
  *       "201":
@@ -105,6 +113,16 @@ module.exports = router;
  *         schema:
  *           type: string
  *         description: Location name
+ *       - in: query
+ *         name: latitude
+ *         schema:
+ *           type: string
+ *         description: latitude
+ *       - in: query
+ *         name: longitude
+ *         schema:
+ *           type: string
+ *         description: longitude
  *       - in: query
  *         name: role
  *         schema:

@@ -7,6 +7,8 @@ const createAccident = {
     status: Joi.string().valid('danger', 'normal'),
     content: Joi.string(),
     locationName: Joi.string(),
+    latitude: Joi.string(),
+    longitude: Joi.string(),
     people: Joi.number(),
   }),
 };
@@ -16,6 +18,8 @@ const getAccidents = {
     nameAccident: Joi.string(),
     status: Joi.string().valid('danger', 'normal'),
     locationName: Joi.string(),
+    latitude: Joi.string(),
+    longitude: Joi.string(),
     people: Joi.number(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),

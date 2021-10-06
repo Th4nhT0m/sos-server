@@ -33,7 +33,6 @@ const getAccidentById = async (id) =>{
   return Accident.findById(id);
 };
 
-
 /**
  * Get accident by status
  * @param {string}  status
@@ -81,4 +80,3 @@ module.exports = {
   updateAccidentById,
   queryAccident
 };
-
