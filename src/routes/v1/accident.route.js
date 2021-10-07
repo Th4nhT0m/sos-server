@@ -12,6 +12,10 @@ router
   .get(auth('Users'), validate(accidentValidation.getAccidents), accidentController.getAccidents);
 
 router
+  .route('/Urgent')
+  .post(auth('Users'), validate(accidentValidation.createAccidentUrgent), accidentController.createAccident);
+
+router
   .route('/:accidentId')
   .get(auth('Users'), validate(accidentValidation.getAccident), accidentController.getAccident)
   .patch(auth('Users'), validate(accidentValidation.updateAccident), accidentController.updateAccident)
@@ -49,6 +53,7 @@ module.exports = router;
  *               - latitude
  *               - longitude
  *               - people
+ *               - user
  *             properties:
  *               nameAccident:
  *                 type: string
@@ -63,6 +68,8 @@ module.exports = router;
  *                 type: string
  *               longitude:
  *                 type: string
+ *               user:
+ *                 type: string
  *               people:
  *                 type: Number
  *             example:
@@ -72,6 +79,7 @@ module.exports = router;
  *               locationName: nga
  *               latitude: "70.235122"
  *               longitude: "75.235122"
+ *               user: 615703b8c5678d1ea8f597af
  *               people: 2
  *     responses:
  *       "201":
@@ -124,12 +132,12 @@ module.exports = router;
  *           type: string
  *         description: longitude
  *       - in: query
- *         name: role
+ *         name: user
  *         schema:
  *           type: string
- *         description: User role
+ *         description: User
  *       - in: query
- *         name: role
+ *         name: people
  *         schema:
  *           type: Number
  *         description: people number
@@ -180,6 +188,59 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /accidents/Urgent:
+ *   post:
+ *     summary: Create a urgent accident
+ *     description: user can create other urgent accidents.
+ *     tags: [Accidents]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - locationName
+ *               - latitude
+ *               - longitude
+ *               - user
+ *             properties:
+ *               locationName:
+ *                 type: latitude
+ *               latitude:
+ *                 type: string
+ *               longitude:
+ *                 type: string
+ *               user:
+ *                 type: string
+ *             example:
+ *               locationName: nga
+ *               latitude: "70.235122"
+ *               longitude: "75.235122"
+ *               user: 615703b8c5678d1ea8f597af
+ *     responses:
+ *       "201":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 accident:
+ *                   $ref: '#/components/schemas/Accident'
+ *       "400":
+ *         $ref: '#/components/responses/DuplicateEmail'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *
  */
 
 /**

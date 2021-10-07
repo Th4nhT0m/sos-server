@@ -46,6 +46,9 @@ module.exports = router;
  *               - user
  *               - content
  *               - timeOut
+ *               - locationName
+ *               - latitude
+ *               - longitude
  *             properties:
  *               accident:
  *                 type: string
@@ -55,11 +58,20 @@ module.exports = router;
  *                 type: string
  *               timeOut:
  *                 type: Date
+ *               locationName:
+ *                 type: string
+ *               latitude:
+ *                 type: string
+ *               longitude:
+ *                 type: string
  *             example:
  *               accident: 615704b89e78551a588d220f
  *               user: 615703b8c5678d1ea8f597af
  *               content: card
  *               timeOut: 09-06-2021
+ *               locationName: tay ninh
+ *               latitude: "75.253698"
+ *               longitude: "75.253698"
  *     responses:
  *       "201":
  *         description: Created
@@ -110,6 +122,26 @@ module.exports = router;
  *         schema:
  *           type: Date
  *         description: Date out
+ *       - in: query
+ *         name: locationName
+ *         schema:
+ *           type: string
+ *         description: address
+ *       - in: query
+ *         name: locationName
+ *         schema:
+ *           type: string
+ *         description: location Name
+ *       - in: query
+ *         name: latitude
+ *         schema:
+ *           type: string
+ *         description: latitude
+ *       - in: query
+ *         name: longitude
+ *         schema:
+ *           type: string
+ *         description: latitude
  *       - in: query
  *         name: sortBy
  *         schema:
