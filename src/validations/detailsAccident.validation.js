@@ -7,6 +7,9 @@ const createDetailsAccident = {
     user: Joi.string().custom(objectId),
     content: Joi.string(),
     timeOut: Joi.date(),
+    latitude: Joi.string(),
+    longitude: Joi.string(),
+    locationName: Joi.string(),
   }),
 };
 
@@ -15,7 +18,10 @@ const getDetailsAccidents = {
     accident: Joi.string().custom(objectId),
     statusLog: Joi.string().valid('Start','Supporting','End'),
     content: Joi.string(),
+    locationName: Joi.string(),
     user: Joi.string().custom(objectId),
+    latitude: Joi.string(),
+    longitude: Joi.string(),
     timeOut: Joi.date(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),

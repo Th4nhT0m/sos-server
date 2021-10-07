@@ -10,6 +10,7 @@ const accidentSchema = new Schema({
   },
   nameAccident: {
     type: String,
+    default: 'Tai nạn'
   },
   status: {
     type: String,

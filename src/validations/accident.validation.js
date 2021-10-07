@@ -10,8 +10,22 @@ const createAccident = {
     latitude: Joi.string(),
     longitude: Joi.string(),
     people: Joi.number(),
+    user: Joi.string().custom(Object),
   }),
 };
+
+const createAccidentUrgent = {
+  body: Joi.object().keys({
+    nameAccident: Joi.string().default('Tai nạn sử dụng thông báo khẩn cấp'),
+    status: Joi.string().default('danger'),
+    content: Joi.string().default('Cần gấp người trợ giúp'),
+    locationName: Joi.string(),
+    latitude: Joi.string(),
+    longitude: Joi.string(),
+    people: Joi.string().default(0),
+    user: Joi.string().custom(Object),
+  }),
+}
 
 const getAccidents = {
   query: Joi.object().keys({
@@ -20,6 +34,7 @@ const getAccidents = {
     locationName: Joi.string(),
     latitude: Joi.string(),
     longitude: Joi.string(),
+    user: Joi.string().custom(Object),
     people: Joi.number(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
@@ -57,6 +72,7 @@ module.exports = {
   createAccident,
   getAccidents,
   getAccident,
+  createAccidentUrgent,
   updateAccident,
   deleteAccident
 };

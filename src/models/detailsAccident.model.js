@@ -20,6 +20,18 @@ const detailsAccidentSchema = new Schema({
     default: 'Start'
   },
 
+  locationName: {
+    type: String
+  },
+
+  latitude: {
+    type: String,
+  },
+
+  longitude: {
+    type: String,
+  },
+
   content:{
     type: String
   },
