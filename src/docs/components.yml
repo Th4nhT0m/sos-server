@@ -8,16 +8,32 @@ components:
         email:
           type: string
           format: email
+        identityCard:
+          type: string
+        numberPhone:
+          type: string
+        address:
+          type: string
         name:
           type: string
         role:
           type: string
           enum: [user, admin]
+        sex:
+          type: string
+          enum: [ Male, Female, Other ]
+        dob:
+          type: date
       example:
         id: 5ebac534954b54139806c112
         email: fake@example.com
+        identityCard: 123456789012
+        numberPhone: 0933882965
         name: fake name
+        sex: Female
         role: user
+        address: Tây ninh
+        dob: 2021-09-09
 
     Accident:
       type: object
@@ -51,6 +67,30 @@ components:
         user: 615703b8c5678d1ea8f597af
         content: hu xe
         people: 2
+
+    Handbook:
+      type: object
+      properties:
+        id:
+          type: string
+        nameHandbook:
+          type: string
+        severity:
+          type: string
+          enum: [ Serious , Medium , Simple ]
+        icon:
+          type: string
+        content:
+          type: string
+        utensil:
+          type: string
+      example:
+        id: 4ebac5349s4ba4139806c112
+        nameHandbook: be banh
+        severity: Medium
+        icon: hinh
+        content: băng lại
+        utensil: băng
 
     DetailsAccident:
         type: object

@@ -4,7 +4,7 @@ const { objectId } = require("./custom.validation");
 const createHandbook = {
   body: Joi.object().keys({
     nameHandbook: Joi.string(),
-    severity: Joi.string().valid('serious','medium','simple'),
+    severity: Joi.string().valid('Serious','Medium','Simple'),
     icon: Joi.string(),
     content: Joi.string(),
     utensil: Joi.string(),
@@ -14,7 +14,7 @@ const createHandbook = {
 const getHandbooks = {
   query: Joi.object().keys({
     nameHandbook: Joi.string(),
-    severity: Joi.string().valid('serious','medium','simple'),
+    severity: Joi.string().valid('Serious','Medium','Simple'),
     icon: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
@@ -34,7 +34,7 @@ const updateHandbook = {
   }),
   body: Joi.object().keys({
     nameHandbook: Joi.string(),
-    severity: Joi.string().valid('serious','medium','simple'),
+    severity: Joi.string().valid('Serious','Medium','Simple'),
     icon: Joi.string(),
     content: Joi.string(),
     utensil: Joi.string(),

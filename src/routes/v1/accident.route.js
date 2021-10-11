@@ -63,7 +63,7 @@ module.exports = router;
  *               content:
  *                 type: string
  *               locationName:
- *                 type: latitude
+ *                 type: string
  *               latitude:
  *                 type: string
  *               longitude:

@@ -10,7 +10,7 @@ const handbookSchema = new Schema({
 
   severity: {
     type: String,
-    enum: ['serious','medium','simple']
+    enum: ['Serious','Medium','Simple']
   },
 
   icon: String,
