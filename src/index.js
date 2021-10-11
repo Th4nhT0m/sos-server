@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
-//const io = require("socket.io")(server,{cors:{origin: "*"}})
+
 
 let server;
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
@@ -11,6 +11,11 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
     logger.info(`Listening to port ${config.port}`);
   });
 });
+
+// const io = require('socket.io')(app.listen(config.port));
+// io.on("connection",(socket) => {
+//   console.log("Socket is connected...")
+// })
 
 const exitHandler = () => {
   if (server) {

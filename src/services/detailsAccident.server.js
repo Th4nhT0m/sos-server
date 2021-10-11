@@ -27,7 +27,7 @@ const queryDAccident = async (filter, options) => {
 /**
  * Get accident by id
  * @param {ObjectId} id
- * @returns {Promise<Accident>}
+ * @returns {Promise<>}
  */
 const getDAccidentById = async (id) =>{
   return DetailsAccident.findById(id);

@@ -15,11 +15,11 @@ const createDetailsAccident = {
 
 const getDetailsAccidents = {
   query: Joi.object().keys({
-    accident: Joi.string().custom(objectId),
-    statusLog: Joi.string().valid('Start','Supporting','End'),
+    accident: Joi.string(),
+    statusLog: Joi.string(),
     content: Joi.string(),
     locationName: Joi.string(),
-    user: Joi.string().custom(objectId),
+    user: Joi.string(),
     latitude: Joi.string(),
     longitude: Joi.string(),
     timeOut: Joi.date(),

@@ -30,11 +30,11 @@ const createAccidentUrgent = {
 const getAccidents = {
   query: Joi.object().keys({
     nameAccident: Joi.string(),
-    status: Joi.string().valid('danger', 'normal'),
+    status: Joi.string(),
     locationName: Joi.string(),
     latitude: Joi.string(),
     longitude: Joi.string(),
-    user: Joi.string().custom(Object),
+    user: Joi.string(),
     people: Joi.number(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
@@ -76,8 +76,3 @@ module.exports = {
   updateAccident,
   deleteAccident
 };
-
-
-
-
-

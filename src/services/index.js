@@ -4,3 +4,4 @@ module.exports.tokenService = require('./token.service');
 module.exports.userService = require('./user.service');
 module.exports.accidentServer = require('./accident.server');
 module.exports.detailsAccidentServer = require('./detailsAccident.server');
+module.exports.handbookServer = require('./handbook.server');

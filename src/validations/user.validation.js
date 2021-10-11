@@ -40,6 +40,7 @@ const updateUser = {
       email: Joi.string().email(),
       password: Joi.string().custom(password),
       name: Joi.string(),
+      Avatar: Joi.string(),
       identityCard: Joi.string().required(),
       numberPhone: Joi.string().required(),
       address: Joi.string().required(),
