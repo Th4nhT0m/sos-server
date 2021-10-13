@@ -1,10 +1,11 @@
 const Joi = require('joi');
 const { objectId } = require("./custom.validation");
+const docker = require("../config/docker");
 
 const createAccident = {
   body: Joi.object().keys({
     nameAccident: Joi.string(),
-    status: Joi.string().valid('danger', 'normal'),
+    status: Joi.string().valid('Danger', 'Normal'),
     content: Joi.string(),
     locationName: Joi.string(),
     latitude: Joi.string(),
@@ -16,9 +17,9 @@ const createAccident = {
 
 const createAccidentUrgent = {
   body: Joi.object().keys({
-    nameAccident: Joi.string().default('Tai nạn sử dụng thông báo khẩn cấp'),
-    status: Joi.string().default('danger'),
-    content: Joi.string().default('Cần gấp người trợ giúp'),
+    nameAccident: Joi.string().default(docker.descriptionNameAU),
+    status: Joi.string().default('Danger'),
+    content: Joi.string().default(docker.descriptionContentAU),
     locationName: Joi.string(),
     latitude: Joi.string(),
     longitude: Joi.string(),
@@ -54,7 +55,7 @@ const updateAccident = {
   }),
   body: Joi.object().keys({
       nameAccident: Joi.string(),
-      status: Joi.string().valid('danger', 'normal'),
+      status: Joi.string().valid('Danger', 'Normal'),
       content: Joi.string(),
       locationName: Joi.string(),
       people: Joi.number(),
