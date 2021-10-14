@@ -126,8 +126,6 @@ module.exports = router;
  *             schema:
  *               type: object
  *               properties:
- *                 user:
- *                   $ref: '#/components/schemas/User'
  *                 tokens:
  *                   $ref: '#/components/schemas/AuthTokens'
  *       "401":
