@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { toJSON, paginate } = require('./plugins');
 const Schema = mongoose.Schema
+const docker = require('../config/docker')
 
 const detailsAccidentSchema = new Schema({
 
@@ -33,7 +34,8 @@ const detailsAccidentSchema = new Schema({
   },
 
   content:{
-    type: String
+    type: String,
+    default: docker.descriptionDetailsAccident
   },
 
   timeOut:{

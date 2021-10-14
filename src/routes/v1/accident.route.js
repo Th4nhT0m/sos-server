@@ -59,7 +59,7 @@ module.exports = router;
  *                 type: string
  *               status:
  *                  type: string
- *                  enum: [danger,normal]
+ *                  enum: [Danger,Normal]
  *               content:
  *                 type: string
  *               locationName:
@@ -74,7 +74,7 @@ module.exports = router;
  *                 type: Number
  *             example:
  *               nameAccident: fake name
- *               status: danger
+ *               status: Normal
  *               content: card
  *               locationName: nga
  *               latitude: "70.235122"
@@ -114,7 +114,7 @@ module.exports = router;
  *         name: status
  *         schema:
  *           type: string
- *           enum: [danger,normal]
+ *           enum: [Danger,Normal]
  *         description: Accident status
  *       - in: query
  *         name: locationName
@@ -297,7 +297,7 @@ module.exports = router;
  *                 type: string
  *               status:
  *                 type: string
- *                 enum: [danger,normal]
+ *                 enum: [Danger,Normal]
  *               content:
  *                 type: string
  *               locationName:

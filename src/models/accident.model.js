@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { toJSON, paginate } = require('./plugins');
 const Schema = mongoose.Schema
+const docker = require('../config/docker')
 
 const accidentSchema = new Schema({
 
@@ -10,16 +11,16 @@ const accidentSchema = new Schema({
   },
   nameAccident: {
     type: String,
-    default: 'Tai nạn'
+    default: docker.descriptionNameAccident
   },
   status: {
     type: String,
-    enum: ['danger','normal']
+    enum: ['Danger','Normal']
   },
 
   content: {
     type: String,
-    default: 'Cần được hỗ trợ'
+    default: docker.descriptionContentAccident
   },
 
   locationName: {

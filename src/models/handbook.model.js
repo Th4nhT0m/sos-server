@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
+const docker = require('../config/docker');
 const Schema = mongoose.Schema
 
 const handbookSchema = new Schema({
@@ -17,7 +18,7 @@ const handbookSchema = new Schema({
 
   content: {
     type: String,
-    default: "Sẽ cập nhật sau"
+    default: docker.descriptionContentHB
   },
 
   utensil: {
@@ -28,7 +29,7 @@ const handbookSchema = new Schema({
   timestamps: true,
 });
 /**
- * @typedef
+ * @typedef handbook
  */
 handbookSchema.plugin(toJSON);
 handbookSchema.plugin(paginate);
