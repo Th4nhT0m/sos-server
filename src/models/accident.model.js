@@ -44,6 +44,7 @@ const accidentSchema = new Schema({
     type: Date,
     default: Date.now
   }
+
 });
 /**
  * @typedef Accident

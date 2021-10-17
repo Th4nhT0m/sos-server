@@ -3,3 +3,4 @@ module.exports.User = require('./user.model');
 module.exports.Accident = require('./accident.model');
 module.exports.DetailsAccident = require('./detailsAccident.model');
 module.exports.Handbook = require('./handbook.model');
+module.exports.AccidentType = require('./accidentType.models');
