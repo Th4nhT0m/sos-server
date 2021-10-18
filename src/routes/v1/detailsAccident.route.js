@@ -46,7 +46,6 @@ module.exports = router;
  *               - user
  *               - content
  *               - timeOut
- *               - locationName
  *               - latitude
  *               - longitude
  *             properties:
@@ -58,8 +57,6 @@ module.exports = router;
  *                 type: string
  *               timeOut:
  *                 type: Date
- *               locationName:
- *                 type: string
  *               latitude:
  *                 type: string
  *               longitude:
@@ -69,7 +66,6 @@ module.exports = router;
  *               user: 615703b8c5678d1ea8f597af
  *               content: card
  *               timeOut: 09-06-2021
- *               locationName: tay ninh
  *               latitude: "75.253698"
  *               longitude: "75.253698"
  *     responses:
@@ -107,31 +103,16 @@ module.exports = router;
  *           type: string
  *         description: accident
  *       - in: query
- *         name: statusLog
+ *         name: status
  *         schema:
  *           type: string
  *           enum: [Start, Supporting , End]
  *         description: status Log
  *       - in: query
- *         name: content
- *         schema:
- *           type: string
- *         description: content
- *       - in: query
  *         name: timeOut
  *         schema:
  *           type: Date
  *         description: Date out
- *       - in: query
- *         name: locationName
- *         schema:
- *           type: string
- *         description: address
- *       - in: query
- *         name: locationName
- *         schema:
- *           type: string
- *         description: location Name
  *       - in: query
  *         name: latitude
  *         schema:
@@ -141,7 +122,7 @@ module.exports = router;
  *         name: longitude
  *         schema:
  *           type: string
- *         description: latitude
+ *         description: longitude
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -243,17 +224,23 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               statusLog:
+ *               status:
  *                 type: string
  *                 enum: [Start, Supporting , End]
  *               content:
  *                 type: string
  *               timeOut:
+ *                 type: Date
+ *               latitude:
+ *                 type: string
+ *               longitude:
  *                 type: string
  *             example:
- *               statusLog: Supporting
+ *               status: Supporting
  *               content: be banh sau
- *               timeOut: 09-09-2021
+ *               timeOut: 2021-09-09
+ *               latitude: "702.25369"
+ *               longitude: "702.25369"
  *     responses:
  *       "200":
  *         description: OK

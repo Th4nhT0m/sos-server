@@ -47,40 +47,35 @@ module.exports = router;
  *             type: object
  *             required:
  *               - nameAccident
- *               - status
- *               - content
- *               - locationName
+ *               - accidentType
+ *               - description
  *               - latitude
  *               - longitude
- *               - people
- *               - user
+ *               - created_by
+ *               - modified_by
  *             properties:
  *               nameAccident:
  *                 type: string
- *               status:
+ *               accidentType:
  *                  type: string
- *                  enum: [Danger,Normal]
- *               content:
- *                 type: string
- *               locationName:
+ *               description:
  *                 type: string
  *               latitude:
  *                 type: string
  *               longitude:
  *                 type: string
- *               user:
+ *               created_by:
  *                 type: string
- *               people:
- *                 type: Number
+ *               modified_by:
+ *                 type: string
  *             example:
- *               nameAccident: fake name
- *               status: Normal
- *               content: card
- *               locationName: nga
+ *               nameAccident: accident card
+ *               accidentType: 88703b8c5678d1ea8f597af
+ *               description: card
  *               latitude: "70.235122"
  *               longitude: "75.235122"
- *               user: 615703b8c5678d1ea8f597af
- *               people: 2
+ *               created_by: 615703b8c5678d1ea8f597af
+ *               modified_by: 615703b8c5678d1ea8f597af
  *     responses:
  *       "201":
  *         description: Created
@@ -111,36 +106,20 @@ module.exports = router;
  *           type: string
  *         description: Accident name
  *       - in: query
- *         name: status
+ *         name: accidentType
  *         schema:
  *           type: string
- *           enum: [Danger,Normal]
  *         description: Accident status
  *       - in: query
- *         name: locationName
+ *         name: created_by
  *         schema:
  *           type: string
- *         description: Location name
+ *         description: user name create
  *       - in: query
- *         name: latitude
+ *         name: modified_by
  *         schema:
  *           type: string
- *         description: latitude
- *       - in: query
- *         name: longitude
- *         schema:
- *           type: string
- *         description: longitude
- *       - in: query
- *         name: user
- *         schema:
- *           type: string
- *         description: User
- *       - in: query
- *         name: people
- *         schema:
- *           type: Number
- *         description: people number
+ *         description: user name update
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -206,24 +185,28 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - locationName
+ *               - accidentType
  *               - latitude
  *               - longitude
- *               - user
+ *               - created_by
+ *               - modified_by
  *             properties:
- *               locationName:
- *                 type: latitude
+ *               accidentType:
+ *                 type: string
  *               latitude:
  *                 type: string
  *               longitude:
  *                 type: string
- *               user:
+ *               created_by:
+ *                 type: string
+ *               modified_by:
  *                 type: string
  *             example:
- *               locationName: nga
+ *               accidentType: 6157sss5b8c5678d1ea8f597af
  *               latitude: "70.235122"
  *               longitude: "75.235122"
- *               user: 615703b8c5678d1ea8f597af
+ *               created_by: 615703b8c5678d1ea8f597af
+ *               modified_by: 615703b8c5678d1ea8f597af
  *     responses:
  *       "201":
  *         description: Created
@@ -295,21 +278,20 @@ module.exports = router;
  *             properties:
  *               nameAccident:
  *                 type: string
- *               status:
+ *               accidentType:
  *                 type: string
- *                 enum: [Danger,Normal]
- *               content:
+ *               description:
  *                 type: string
- *               locationName:
+ *               latitude:
  *                 type: string
- *               people:
- *                 type: Number
+ *               longitude:
+ *                 type: string
  *             example:
- *               nameAccident: fake name
- *               status: danger
- *               content: be banh sau
- *               locationName: tay ninh
- *               people: 2
+ *               nameAccident: accident card
+ *               accidentType: 6157sss5b8c5678d1ea8f597af
+ *               description: be banh sau
+ *               latitude: "70.25698"
+ *               longitude: "75.02356"
  *     responses:
  *       "200":
  *         description: OK

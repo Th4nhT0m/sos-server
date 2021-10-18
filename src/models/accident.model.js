@@ -5,26 +5,29 @@ const docker = require('../config/docker')
 
 const accidentSchema = new Schema({
 
-  user: {
+  created_by: {
     type: mongoose.SchemaTypes.ObjectId,
     ref:'User'
   },
+
   nameAccident: {
     type: String,
     default: docker.descriptionNameAccident
   },
-  status: {
-    type: String,
-    enum: ['Danger','Normal']
+
+  modified_by: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref:'User'
   },
 
-  content: {
+  accidentType: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref:'AccidentType'
+  },
+
+  description: {
     type: String,
     default: docker.descriptionContentAccident
-  },
-
-  locationName: {
-    type: String
   },
 
   latitude: {
@@ -35,16 +38,8 @@ const accidentSchema = new Schema({
     type: String,
   },
 
-  people: {
-    type: Number,
-    default: 1,
-  },
-
-  timeStart: {
-    type: Date,
-    default: Date.now
-  }
-
+},{
+  timestamps: true,
 });
 /**
  * @typedef Accident

@@ -5,38 +5,33 @@ const docker = require("../config/docker");
 const createAccident = {
   body: Joi.object().keys({
     nameAccident: Joi.string(),
-    status: Joi.string().valid('Danger', 'Normal'),
-    content: Joi.string(),
-    locationName: Joi.string(),
+    accidentType: Joi.string().custom(Object),
+    description: Joi.string(),
     latitude: Joi.string(),
     longitude: Joi.string(),
-    people: Joi.number(),
-    user: Joi.string().custom(Object),
+    created_by: Joi.string().custom(Object),
+    modified_by: Joi.string().custom(Object),
   }),
 };
 
 const createAccidentUrgent = {
   body: Joi.object().keys({
     nameAccident: Joi.string().default(docker.descriptionNameAU),
-    status: Joi.string().default('Danger'),
-    content: Joi.string().default(docker.descriptionContentAU),
-    locationName: Joi.string(),
+    accidentType: Joi.string().custom(Object),
+    description: Joi.string().default(docker.descriptionContentAU),
     latitude: Joi.string(),
     longitude: Joi.string(),
-    people: Joi.string().default(0),
-    user: Joi.string().custom(Object),
+    created_by: Joi.string().custom(Object),
+    modified_by: Joi.string().custom(Object),
   }),
 }
 
 const getAccidents = {
   query: Joi.object().keys({
     nameAccident: Joi.string(),
-    status: Joi.string(),
-    locationName: Joi.string(),
-    latitude: Joi.string(),
-    longitude: Joi.string(),
-    user: Joi.string(),
-    people: Joi.number(),
+    accidentType: Joi.string(),
+    created_by: Joi.string(),
+    modified_by: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -55,10 +50,10 @@ const updateAccident = {
   }),
   body: Joi.object().keys({
       nameAccident: Joi.string(),
-      status: Joi.string().valid('Danger', 'Normal'),
-      content: Joi.string(),
-      locationName: Joi.string(),
-      people: Joi.number(),
+      accidentType: Joi.string().custom(Object),
+      description: Joi.string(),
+      latitude: Joi.string(),
+      longitude: Joi.string(),
     })
       .min(1),
 };

@@ -23,7 +23,7 @@ module.exports = router;
 /**
  * @swagger
  * tags:
- *  name: Accident Type
+ *  name: AccidentsType
  *  description: Accident type retrieval
  */
 
@@ -59,10 +59,195 @@ module.exports = router;
  *               status: Low
  *               remark: no die
  *     responses:
+ *       "201":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 accident:
+ *                   $ref: '#/components/schemas/AccidentType'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ *
+ *   get:
+ *     summary: Get all accidentsType
+ *     description: admin can retrieve all accidentType.
+ *     tags: [AccidentsType]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: accidentTypeName
+ *         schema:
+ *           type: string
+ *         description: accidentType name
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [Low,Average,Danger]
+ *         description: accidentType status
+ *       - in: query
+ *         name: remark
+ *         schema:
+ *           type: string
+ *         description: remark
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *         description: sort by query in the form of field:desc/asc (ex. name:asc)
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         default: 10
+ *         description: Maximum number of accident
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Page number
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 results:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/AccidentType'
+ *                 page:
+ *                   type: integer
+ *                   example: 1
+ *                 limit:
+ *                   type: integer
+ *                   example: 10
+ *                 totalPages:
+ *                   type: integer
+ *                   example: 1
+ *                 totalResults:
+ *                   type: integer
+ *                   example: 1
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *
  */
+
+/**
+ * @swagger
+ * /accidentsType/{id}:
+ *   get:
+ *     summary: Get a accidentType
+ *     description: Logged in admin can fetch only their own accident type information
+ *     tags: [AccidentsType]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: AccidentType id
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/AccidentType'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+ *   patch:
+ *     summary: edit a accidentType
+ *     description:  Logged in admin can update their own information.
+ *     tags: [AccidentsType]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: AccidentType id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               accidentTypeName:
+ *                 type: string
+ *               status:
+ *                 type: string
+ *                 enum: [Low, Average, Danger]
+ *               remark:
+ *                 type: string
+ *             example:
+ *               accidentTypeName: low
+ *               status: Low
+ *               remark: low
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/AccidentType'
+ *       "400":
+ *         $ref: '#/components/responses/DuplicateEmail'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+ *   delete:
+ *     summary: Delete a accident
+ *     description: Logged in users can delete only themselves.
+ *     tags: [AccidentsType]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: AccidentType id
+ *     responses:
+ *       "200":
+ *         description: No content
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ */
+
+
+

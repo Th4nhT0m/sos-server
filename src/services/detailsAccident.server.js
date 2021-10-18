@@ -35,11 +35,11 @@ const getDAccidentById = async (id) =>{
 
 /**
  * Get details accident by statusLog
- * @param {string}  statusLog
+ * @param {string}  status
  * @returns {Promise<DetailsAccident>}
  */
-const getDAccidentByStatus = async (statusLog) =>{
-  return DetailsAccident.findOne({statusLog});
+const getDAccidentByStatus = async (status) =>{
+  return DetailsAccident.findOne({status});
 }
 
 /**

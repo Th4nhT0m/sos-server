@@ -9,16 +9,13 @@ const createDetailsAccident = {
     timeOut: Joi.date(),
     latitude: Joi.string(),
     longitude: Joi.string(),
-    locationName: Joi.string(),
   }),
 };
 
 const getDetailsAccidents = {
   query: Joi.object().keys({
     accident: Joi.string(),
-    statusLog: Joi.string(),
-    content: Joi.string(),
-    locationName: Joi.string(),
+    status: Joi.string(),
     user: Joi.string(),
     latitude: Joi.string(),
     longitude: Joi.string(),
@@ -40,9 +37,11 @@ const updateDetailsAccident = {
     detailsAccidentId: Joi.required().custom(objectId),
   }),
   body: Joi.object().keys({
-    statusLog: Joi.string().valid('Start','Supporting','End'),
+    status: Joi.string().valid('Start','Supporting','End'),
     content: Joi.string(),
     timeOut: Joi.date(),
+    latitude: Joi.string(),
+    longitude: Joi.string(),
   })
     .min(1),
 };
