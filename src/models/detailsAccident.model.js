@@ -15,14 +15,10 @@ const detailsAccidentSchema = new Schema({
     ref: 'accidents'
   },
 
-  statusLog: {
+  status: {
     type: String,
     enum:['Start','Supporting','End'],
     default: 'Start'
-  },
-
-  locationName: {
-    type: String
   },
 
   latitude: {
@@ -42,11 +38,9 @@ const detailsAccidentSchema = new Schema({
     type: Date
   },
 
-  timeStart:{
-    type: Date,
-    default: Date.now
-  }
 
+},{
+  timestamps: true,
 });
 /**
  * @typedef detailsAccident

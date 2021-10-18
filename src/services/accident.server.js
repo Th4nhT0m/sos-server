@@ -57,7 +57,7 @@ const deleteAccidentById = async (accidentId) => {
 };
 
 /**
- * update accident bu id
+ * update accident id
  * @param {ObjectId} accidentId
  * @param {Object} updateBody
  * @returns {Promise<Accident>}
@@ -65,7 +65,7 @@ const deleteAccidentById = async (accidentId) => {
 const updateAccidentById = async (accidentId, updateBody) => {
   const accident = await getAccidentById(accidentId);
   if (!accident) {
-    throw new ApiError(httpStatus.NOT_FOUND,'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND,'Accident not found');
   }
   Object.assign(accident, updateBody);
   await  accident.save();

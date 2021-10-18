@@ -1,38 +1,39 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const detailsAccidentValidation = require('../../validations/detailsAccident.validation');
-const detailsAccidentController = require('../../controllers/detailsAccident.controller');
+const accidentTypeValidation = require('../../validations/accidentType.validation');
+const accidentTypeController = require('../../controllers/accidentType.controller');
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(auth('Users'), validate(detailsAccidentValidation.createDetailsAccident), detailsAccidentController.createDetailsAccident)
-  .get(auth('Users'), validate(detailsAccidentValidation.getDetailsAccidents), detailsAccidentController.getDetailsAccidents);
+  .post(auth('Users'), validate(accidentTypeValidation.createAccidentType), accidentTypeController.createAccidentType)
+  .get(auth('Users'), validate(accidentTypeValidation.getAccidentsType), accidentTypeController.getAccidentsType);
 
 router
-  .route('/:detailsAccidentId')
-  .get(auth('Users'), validate(detailsAccidentValidation.getDetailsAccident), detailsAccidentController.getDetailsAccident)
-  .patch(auth('Users'), validate(detailsAccidentValidation.updateDetailsAccident), detailsAccidentController.updateDetailsAccident)
-  .delete(auth('Users'), validate(detailsAccidentValidation.deleteDetailsAccident),detailsAccidentController.deleteDetailsAccident);
+  .route('/:accidentTypeId')
+  .get(auth('Users'), validate(accidentTypeValidation.getAccidentType), accidentTypeController.getAccidentType)
+  .patch(auth('Users'), validate(accidentTypeValidation.updateAccidentType), accidentTypeController.updateAccidentType)
+  .delete(auth('Users'), validate(accidentTypeValidation.deleteAccidentType),accidentTypeController.deleteAccidentType);
 
 module.exports = router;
+
 
 /**
  * @swagger
  * tags:
- *  name: DetailsAccident
- *  description: Details Accident retrieval
+ *  name: AccidentsType
+ *  description: Accident type retrieval
  */
 
 /**
  * @swagger
- * /detailsAccidents:
+ * /accidentsType:
  *   post:
- *     summary: Create a details accident
- *     description: user can create other details accidents.
- *     tags: [DetailsAccident]
+ *     summary: Create a accident type
+ *     description: admin can create other accidents type.
+ *     tags: [AccidentsType]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -42,32 +43,21 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - accident
- *               - user
- *               - content
- *               - timeOut
- *               - latitude
- *               - longitude
+ *               - accidentTypeName
+ *               - status
+ *               - remark
  *             properties:
- *               accident:
+ *               accidentTypeName:
  *                 type: string
- *               user:
+ *               status:
  *                  type: string
- *               content:
- *                 type: string
- *               timeOut:
- *                 type: Date
- *               latitude:
- *                 type: string
- *               longitude:
+ *                  enum: [Low,Average,Danger]
+ *               remark:
  *                 type: string
  *             example:
- *               accident: 615704b89e78551a588d220f
- *               user: 615703b8c5678d1ea8f597af
- *               content: card
- *               timeOut: 09-06-2021
- *               latitude: "75.253698"
- *               longitude: "75.253698"
+ *               accidentTypeName: sự cố
+ *               status: Low
+ *               remark: no die
  *     responses:
  *       "201":
  *         description: Created
@@ -77,7 +67,7 @@ module.exports = router;
  *               type: object
  *               properties:
  *                 accident:
- *                   $ref: '#/components/schemas/DetailsAccident'
+ *                   $ref: '#/components/schemas/AccidentType'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -86,43 +76,28 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *
  *   get:
- *     summary: Get all details accidents
- *     description: user can retrieve all details accident.
- *     tags: [DetailsAccident]
+ *     summary: Get all accidentsType
+ *     description: admin can retrieve all accidentType.
+ *     tags: [AccidentsType]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: user
+ *         name: accidentTypeName
  *         schema:
  *           type: string
- *         description: user
- *       - in: query
- *         name: accident
- *         schema:
- *           type: string
- *         description: accident
+ *         description: accidentType name
  *       - in: query
  *         name: status
  *         schema:
  *           type: string
- *           enum: [Start, Supporting , End]
- *         description: status Log
+ *           enum: [Low,Average,Danger]
+ *         description: accidentType status
  *       - in: query
- *         name: timeOut
- *         schema:
- *           type: Date
- *         description: Date out
- *       - in: query
- *         name: latitude
+ *         name: remark
  *         schema:
  *           type: string
- *         description: latitude
- *       - in: query
- *         name: longitude
- *         schema:
- *           type: string
- *         description: longitude
+ *         description: remark
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -153,7 +128,7 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/DetailsAccident'
+ *                     $ref: '#/components/schemas/AccidentType'
  *                 page:
  *                   type: integer
  *                   example: 1
@@ -173,14 +148,13 @@ module.exports = router;
  *
  */
 
-
 /**
  * @swagger
- * /detailsAccidents/{id}:
+ * /accidentsType/{id}:
  *   get:
- *     summary: Get a details accident
- *     description: Logged in users can fetch only their own details accident information
- *     tags: [DetailsAccident]
+ *     summary: Get a accidentType
+ *     description: Logged in admin can fetch only their own accident type information
+ *     tags: [AccidentsType]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -189,14 +163,14 @@ module.exports = router;
  *         required: true
  *         schema:
  *           type: string
- *         description: details accident id
+ *         description: AccidentType id
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/DetailsAccident'
+ *                $ref: '#/components/schemas/AccidentType'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -205,9 +179,9 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   patch:
- *     summary: edit a details accident
- *     description:  Logged in users can update their own information.
- *     tags: [DetailsAccident]
+ *     summary: edit a accidentType
+ *     description:  Logged in admin can update their own information.
+ *     tags: [AccidentsType]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -216,7 +190,7 @@ module.exports = router;
  *         required: true
  *         schema:
  *           type: string
- *         description: details Accident id
+ *         description: AccidentType id
  *     requestBody:
  *       required: true
  *       content:
@@ -224,30 +198,24 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
+ *               accidentTypeName:
+ *                 type: string
  *               status:
  *                 type: string
- *                 enum: [Start, Supporting , End]
- *               content:
- *                 type: string
- *               timeOut:
- *                 type: Date
- *               latitude:
- *                 type: string
- *               longitude:
+ *                 enum: [Low, Average, Danger]
+ *               remark:
  *                 type: string
  *             example:
- *               status: Supporting
- *               content: be banh sau
- *               timeOut: 2021-09-09
- *               latitude: "702.25369"
- *               longitude: "702.25369"
+ *               accidentTypeName: low
+ *               status: Low
+ *               remark: low
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/DetailsAccident'
+ *                $ref: '#/components/schemas/AccidentType'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -258,9 +226,9 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   delete:
- *     summary: Delete a details accident
+ *     summary: Delete a accident
  *     description: Logged in users can delete only themselves.
- *     tags: [DetailsAccident]
+ *     tags: [AccidentsType]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -269,7 +237,7 @@ module.exports = router;
  *         required: true
  *         schema:
  *           type: string
- *         description: details accident id
+ *         description: AccidentType id
  *     responses:
  *       "200":
  *         description: No content
@@ -280,4 +248,6 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  */
+
+
 
