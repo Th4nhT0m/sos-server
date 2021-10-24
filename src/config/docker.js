@@ -13,7 +13,6 @@ const descriptionNameAU = "Accident using emergency notification";
 const descriptionContentAU = "Urgently need help";
 
 
-
 module.exports = {
   descriptionNameAccident,
   descriptionContentAccident,
