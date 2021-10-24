@@ -8,6 +8,7 @@ const envVarsSchema = Joi.object()
   .keys({
     NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
     PORT: Joi.number().default(3000),
+    PORT_SOCKET:Joi.number().default(3500),
     Link_To_App: Joi.string().description('link to app'),
     MONGODB_URL: Joi.string().required().description('Mongo DB url'),
     JWT_SECRET: Joi.string().required().description('JWT secret key'),
@@ -66,5 +67,10 @@ module.exports = {
 
   link: {
     linkApp: envVars.Link_To_App,
+  },
+
+  portSocket:{
+     portS: envVars.PORT_SOCKET,
   }
+
 };

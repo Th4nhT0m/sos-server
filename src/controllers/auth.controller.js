@@ -11,7 +11,7 @@ const register = catchAsync(async (req, res) => {
   await emailService.sendVerificationEmail(user.email, verifyEmailToken);
 
   res.status(httpStatus.NO_CONTENT).send();
-  
+
   res.status(httpStatus.CREATED).send({ user, tokens });
 });
 
