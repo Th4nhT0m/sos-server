@@ -9,7 +9,6 @@ const accidentTypeSchema = new Schema( {
     trim: true,
   },
 
-
   status: {
     type: String,
     enum: ['Low', 'Average' , 'Danger']

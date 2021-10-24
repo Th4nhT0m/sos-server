@@ -38,7 +38,6 @@ const detailsAccidentSchema = new Schema({
     type: Date
   },
 
-
 },{
   timestamps: true,
 });
