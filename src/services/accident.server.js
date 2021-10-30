@@ -8,7 +8,9 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Accident>}
  */
 const createAccident = async (accidentBody) => {
-  return Accident.create(accidentBody);
+  return await Accident.create(
+    accidentBody,
+  );
 };
 
 /**

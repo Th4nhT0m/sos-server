@@ -4,15 +4,16 @@ const { objectId } = require("./custom.validation");
 const createAccidentType = {
   body: Joi.object().keys({
     accidentTypeName: Joi.string(),
-    status: Joi.string().valid('Low', 'Average' , 'Danger'),
     remark: Joi.string(),
-  })
+    created_by: Joi.string().custom(objectId),
+    modified_by: Joi.string().custom(objectId),
+  }),
 };
+
 
 const getAccidentsType = {
   query: Joi.object().keys({
     accidentTypeName: Joi.string(),
-    status: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -31,11 +32,10 @@ const updateAccidentType = {
   }),
   body: Joi.object().keys({
     accidentTypeName: Joi.string(),
-    status: Joi.string().valid('Low', 'Average' , 'Danger'),
     remark: Joi.string(),
   })
     .min(1),
-}
+};
 
 const deleteAccidentType = {
   params: Joi.object().keys({

@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { accidentTypeServer, accidentServer } = require('../services');
+const { accidentTypeServer } = require('../services');
 
 const createAccidentType = catchAsync(async (req,res) => {
   const accidentType = await accidentTypeServer.createAccidentType(req.body);
@@ -10,7 +10,7 @@ const createAccidentType = catchAsync(async (req,res) => {
 });
 
 const getAccidentsType = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['accidentTypeName','status'])
+  const filter = pick(req.query, ['accidentTypeName'])
   const options = pick(req.query,['sortBy','limit','page']);
   const result = await accidentTypeServer.queryAccidentType(filter, options);
   res.send(result);
@@ -25,7 +25,7 @@ const getAccidentType = catchAsync(async (req, res) => {
 })
 
 const updateAccidentType = catchAsync(async (req, res) => {
-  const accidentType = await accidentTypeServer.updateAccidentTypeById(req.params.accidentTypeId, req.body);
+  const accidentType = await accidentTypeServer.updateAccidentTypeById(req.params.accidentTypeId, req.body, req.user.id);
   res.send(accidentType);
 });
 

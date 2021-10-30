@@ -3,19 +3,22 @@ const { toJSON, paginate } = require('./plugins');
 const Schema = mongoose.Schema
 
 const accidentTypeSchema = new Schema( {
+
   accidentTypeName: {
     type: String,
     required: true,
-    trim: true,
-  },
-
-  status: {
-    type: String,
-    enum: ['Low', 'Average' , 'Danger']
   },
 
   remark: {
     type: String,
+  },
+
+  created_by: {
+    type: mongoose.SchemaTypes.ObjectId,
+  },
+
+  modified_by: {
+    type: mongoose.SchemaTypes.ObjectId,
   },
 
 },{

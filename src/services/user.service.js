@@ -33,14 +33,12 @@ const queryUsers = async (filter, options) => {
   return await User.paginate(filter, options);
 };
 
-//+++++
 /**
  * Get user by id
  * @param {ObjectId} id
  * @returns {Promise<User>}
  */
 const getUserById = async (id) => {
-  //++
   return User.findById(id);
 };
 
@@ -70,7 +68,6 @@ const getEmailVerified = async (email) => {
 
 /**
  * Update user by id
- * @param {ObjectId} userId
  * @param {Object} updateBody
  * @returns {Promise<User>}
  */
