@@ -58,7 +58,7 @@ const verifyEmail = catchAsync(async (req, res) => {
 });
 
 const getCurrentUser = catchAsync(async (req,res)=>{
-  res.json(req.user);
+  res.status(req.user.id).send();
 });
 
 

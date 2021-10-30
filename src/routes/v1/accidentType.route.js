@@ -11,6 +11,7 @@ router
   .post(auth('Users'), validate(accidentTypeValidation.createAccidentType), accidentTypeController.createAccidentType)
   .get(auth('Users'), validate(accidentTypeValidation.getAccidentsType), accidentTypeController.getAccidentsType);
 
+
 router
   .route('/:accidentTypeId')
   .get(auth('Users'), validate(accidentTypeValidation.getAccidentType), accidentTypeController.getAccidentType)
@@ -31,8 +32,8 @@ module.exports = router;
  * @swagger
  * /accidentsType:
  *   post:
- *     summary: Create a accident type
- *     description: admin can create other accidents type.
+ *     summary: Create a AccidentsType
+ *     description: user can create other AccidentsType.
  *     tags: [AccidentsType]
  *     security:
  *       - bearerAuth: []
@@ -44,20 +45,15 @@ module.exports = router;
  *             type: object
  *             required:
  *               - accidentTypeName
- *               - status
  *               - remark
  *             properties:
  *               accidentTypeName:
  *                 type: string
- *               status:
- *                  type: string
- *                  enum: [Low,Average,Danger]
  *               remark:
- *                 type: string
+ *                  type: string
  *             example:
- *               accidentTypeName: sự cố
- *               status: Low
- *               remark: no die
+ *               accidentTypeName: Basic
+ *               remark: Basic
  *     responses:
  *       "201":
  *         description: Created
@@ -87,12 +83,6 @@ module.exports = router;
  *         schema:
  *           type: string
  *         description: accidentType name
- *       - in: query
- *         name: status
- *         schema:
- *           type: string
- *           enum: [Low,Average,Danger]
- *         description: accidentType status
  *       - in: query
  *         name: remark
  *         schema:
@@ -200,9 +190,6 @@ module.exports = router;
  *             properties:
  *               accidentTypeName:
  *                 type: string
- *               status:
- *                 type: string
- *                 enum: [Low, Average, Danger]
  *               remark:
  *                 type: string
  *             example:

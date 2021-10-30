@@ -25,7 +25,6 @@ const getUsers = {
   }),
 };
 
-//---++----
 const getUser = {
   params: Joi.object().keys({
     userId: Joi.string().custom(objectId),
@@ -33,9 +32,9 @@ const getUser = {
 };
 
 const updateUser = {
-  params: Joi.object().keys({
-    userId: Joi.required().custom(objectId),
-  }),
+  // params: Joi.object().keys({
+  //   userId: Joi.required().custom(objectId),
+  // }),
   body: Joi.object()
     .keys({
       email: Joi.string().email(),

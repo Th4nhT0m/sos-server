@@ -7,7 +7,7 @@ const ApiError = require('../utils/ApiError');
  * @param {Object} accidentTypeBody
  * @returns {Promise<AccidentType>}
  */
-const createAccidentType = async (accidentTypeBody) => {
+const createAccidentType = async (accidentTypeBody ) => {
   return AccidentType.create(accidentTypeBody);
 }
 
@@ -36,7 +36,7 @@ const getAccidentTypeByStatus = async (status) =>{
 /**
  * Get accident by id
  * @param {ObjectId} id
- * @returns {Promise<>}
+ * @returns {Promise<Accident>}
  */
 const getAccidentTypeById = async (id) =>{
   return AccidentType.findById(id);
@@ -59,15 +59,16 @@ const deleteAccidentTypeById = async (accidentTypeId) => {
 /**
  * update accident type id
  * @param {ObjectId} accidentTypeId
+ * @param {ObjectId} userID
  * @param {Object} updateBody
  * @returns {Promise<AccidentType>}
  */
-const updateAccidentTypeById = async (accidentTypeId, updateBody) => {
+const updateAccidentTypeById = async (accidentTypeId, updateBody, userID) => {
   const accidentType = await getAccidentTypeById(accidentTypeId);
   if (!accidentType) {
-    throw new ApiError(httpStatus.NOT_FOUND,'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND,'Accident type not found');
   }
-  Object.assign(accidentType, updateBody);
+  Object.assign(accidentType, updateBody );
   await  accidentType.save();
   return accidentType;
 }
