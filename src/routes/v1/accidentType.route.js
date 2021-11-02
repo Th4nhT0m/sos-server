@@ -64,8 +64,6 @@ module.exports = router;
  *               properties:
  *                 accident:
  *                   $ref: '#/components/schemas/AccidentType'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":

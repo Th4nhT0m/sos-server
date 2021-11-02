@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const { accidentTypeServer } = require('../services');
 
 const createAccidentType = catchAsync(async (req,res) => {
-  const accidentType = await accidentTypeServer.createAccidentType(req.body);
+  const accidentType = await accidentTypeServer.createAccidentType(req.user.id,req.body);
   res.status(httpStatus.CREATED).send(accidentType);
 });
 
