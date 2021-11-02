@@ -42,16 +42,18 @@ components:
           type: string
         accidentTypeName:
           type: string
-        status:
-          type: string
-          enum: [ Low, Average, Danger]
         remark:
           type: string
+        created_by:
+          type: object
+        modified_by:
+          type: object
       example:
         id: 5ebac534954b54139806c112
         accidentTypeName: Low
-        status: Low
         remark: Low
+        created_by: 617d0805f24fef34b082a161
+        modified_by: modified_by
 
     Accident:
       type: object

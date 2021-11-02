@@ -2,15 +2,26 @@ const httpStatus = require('http-status');
 const { AccidentType } = require('../models');
 const ApiError = require('../utils/ApiError');
 
+
+// BUG
 /**
  * Create a Accident Type
+ * @param {Object} userid
  * @param {Object} accidentTypeBody
- * @returns {Promise<AccidentType>}
+ * @returns {Promise<EnforceDocument<T, TMethods>[]>}
  */
-const createAccidentType = async (accidentTypeBody ) => {
-  return AccidentType.create(accidentTypeBody);
+const createAccidentType = async (accidentTypeBody,userid ) => {
+   const crateAccident = await AccidentType.create(
+     accidentTypeBody,
+     accidentTypeBody.created_by = userid,
+     accidentTypeBody.modified_by = userid
+   );
+  return crateAccident;
 }
-
+// accidentTypeBody
+// accidentTypeBody: name, status..
+// const FE-name = accidentTypeBody.name
+//
 /**
  * Query for Accident Type
  * @param {Object} filter - Mongo filter
