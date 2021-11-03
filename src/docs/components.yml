@@ -75,15 +75,14 @@ components:
         modified_by:
           type: string
       example:
-        "nameAccident": "Accident using emergency notification",
-        "description": "Urgently need help",
-        "latitude": "70.235122",
-        "longitude": "75.235122",
-        "created_by": "615703b8c5678d1ea8f597af",
-        "modified_by": "615703b8c5678d1ea8f597af",
-        "accidentType": "617d66b2b122d33c7017cfc3",
-        "id": "6182727ecbe9511174f2ef1e"
-
+        id: 4ebac5349s4ba4139806c112
+        nameAccident: be banh
+        description: be banh
+        accidentType: 4ebac5349s4ba4139806c112
+        latitude: 70.1256
+        longitude: 70.125
+        created_by: 4ebac5349s4ba4139806c112
+        modified_by: 4ebac5349s4ba4139806c112
 
     Handbook:
       type: object
