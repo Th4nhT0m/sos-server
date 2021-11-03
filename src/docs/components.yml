@@ -62,9 +62,9 @@ components:
           type: string
         nameAccident:
           type: string
-        status:
-          type: string
         description:
+          type: string
+        accidentType:
           type: string
         latitude:
           type: string
@@ -75,14 +75,15 @@ components:
         modified_by:
           type: string
       example:
-        id: 4ebac5349s4ba4139806c112
-        nameAccident: be banh
-        status: 8ebac5349s4ba4139806c112
-        latitude: "70.235122"
-        longitude: "75.235122"
-        created_by: 615703b8c5678d1ea8f597af
-        modified_by: 615703b8c5678d1ea8f597af
-        description: hu xe
+        "nameAccident": "Accident using emergency notification",
+        "description": "Urgently need help",
+        "latitude": "70.235122",
+        "longitude": "75.235122",
+        "created_by": "615703b8c5678d1ea8f597af",
+        "modified_by": "615703b8c5678d1ea8f597af",
+        "accidentType": "617d66b2b122d33c7017cfc3",
+        "id": "6182727ecbe9511174f2ef1e"
+
 
     Handbook:
       type: object
