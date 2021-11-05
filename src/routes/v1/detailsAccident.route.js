@@ -62,8 +62,8 @@ module.exports = router;
  *               longitude:
  *                 type: string
  *             example:
- *               accident: 615704b89e78551a588d220f
- *               user: 615703b8c5678d1ea8f597af
+ *               accident: 6182727ecbe9511174f2ef1e
+ *               user: 617d0805f24fef34b082a161
  *               content: card
  *               timeOut: 09-06-2021
  *               latitude: "75.253698"

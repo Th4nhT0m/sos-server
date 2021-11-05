@@ -6,7 +6,7 @@ const {handbookServer } =require('../services');
 
 
 const createHandbook = catchAsync(async (req,res) => {
-  const createHB = await handbookServer.createHandbook(req.body);
+  const createHB = await handbookServer.createHandbook(req.body,req.user.id);
   res.status(httpStatus.CREATED).send(createHB);
 });
 
@@ -26,7 +26,7 @@ const getHandbook = catchAsync(async (req, res) => {
 });
 
 const updateHandbook  = catchAsync(async (req, res) => {
-  const updateHB = await handbookServer.updateHandbookById(req.params.handbookId, req.body);
+  const updateHB = await handbookServer.updateHandbookById(req.params.handbookId, req.body, req.user.id);
   res.send(updateHB);
 });
 

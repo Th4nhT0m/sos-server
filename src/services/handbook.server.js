@@ -4,11 +4,21 @@ const ApiError = require('../utils/ApiError')
 
 /**
  * Create a handbook
+ * @param {Object} userId
  * @param {Object} handbookBody
  * @returns {Promise<Handbook>}
  */
-const createHandbook = async (handbookBody) => {
-  return Handbook.create(handbookBody);
+const createHandbook = async (handbookBody,userId) => {
+  const handbookCre = Handbook.create({
+    nameHandbook: handbookBody.nameHandbook,
+    severity: handbookBody.severity,
+    icon: handbookBody.icon,
+    content: handbookBody.content,
+    utensil: handbookBody.utensil,
+    created_by: userId,
+    modified_by: userId
+  });
+  return handbookCre;
 }
 
 /**
@@ -58,16 +68,24 @@ const deleteHandbookById = async (handbookId) => {
 
 /**
  * update Handbook bu id
+ * @param {ObjectId} userId
  * @param {ObjectId} handbookId
  * @param {Object} updateBody
  * @returns {Promise<Handbook>}
  */
-const updateHandbookById = async (handbookId, updateBody) => {
+const updateHandbookById = async (handbookId, updateBody,userId) => {
   const updateHB = await getHandbookById(handbookId);
   if (!updateHB) {
     throw new ApiError(httpStatus.NOT_FOUND,'handbook not found');
   }
-  Object.assign(updateHB, updateBody);
+  Object.assign(updateHB, {
+    nameHandbook: updateBody.nameHandbook,
+    severity: updateBody.severity,
+    icon: updateBody.icon,
+    content: updateBody.content,
+    utensil: updateBody.utensil,
+    modified_by: userId
+  });
   await  updateHB.save();
   return updateHB;
 }

@@ -4,11 +4,21 @@ const ApiError = require('../utils/ApiError');
 
 /**
  * Create a details accident
+ * @param {Object} userId
  * @param {Object} detailsAccidentBody
  * @returns {Promise<DetailsAccident>}
  */
-const createDAccident = async (detailsAccidentBody) => {
-  return DetailsAccident.create(detailsAccidentBody);
+const createDAccident = async (detailsAccidentBody,userId) => {
+  const detailsAccidentCre = DetailsAccident.create({
+    accident: detailsAccidentBody.accident,
+    user: userId,
+    modified_by: userId,
+    content: detailsAccidentBody.content,
+    timeOut: detailsAccidentBody.timeOut,
+    latitude: detailsAccidentBody.latitude,
+    longitude: detailsAccidentBody.longitude
+  });
+  return detailsAccidentCre;
 };
 
 /**
@@ -58,16 +68,24 @@ const deleteAccidentById = async (detailsAccidentId) => {
 
 /**
  * update accident bu id
+ * @param {ObjectId} userId
  * @param {ObjectId} detailsAccidentId
  * @param {Object} updateBody
  * @returns {Promise<DetailsAccident>}
  */
-const updateAccidentById = async (detailsAccidentId, updateBody) => {
+const updateAccidentById = async (detailsAccidentId, updateBody,userId) => {
   const updateDAccident = await getDAccidentById(detailsAccidentId);
   if (!updateDAccident) {
-    throw new ApiError(httpStatus.NOT_FOUND,'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND,'Accident details not found');
   }
-  Object.assign(updateDAccident, updateBody);
+  Object.assign(updateDAccident, {
+    status: updateBody.status,
+    modified_by: userId,
+    content: updateBody.content,
+    timeOut: updateBody.timeOut,
+    latitude: updateBody.latitude,
+    longitude: updateBody.longitude
+  });
   await  updateDAccident.save();
   return updateDAccident;
 }

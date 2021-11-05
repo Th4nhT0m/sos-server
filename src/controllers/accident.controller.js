@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const { accidentServer } = require('../services');
 
 const createAccident = catchAsync(async (req,res) => {
-  const accident = await accidentServer.createAccident(req.body);
+  const accident = await accidentServer.createAccident(req.body, req.user.id);
   res.status(httpStatus.CREATED).send(accident);
 });
 
@@ -25,7 +25,7 @@ const getAccident = catchAsync(async (req, res) => {
 })
 
 const updateAccident = catchAsync(async (req, res) => {
-  const accident = await accidentServer.updateAccidentById(req.params.accidentId, req.body);
+  const accident = await accidentServer.updateAccidentById(req.params.accidentId, req.body,req.user.id);
   res.send(accident);
 });
 

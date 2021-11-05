@@ -5,12 +5,20 @@ const ApiError = require('../utils/ApiError');
 /**
  * Create a accident
  * @param {Object} accidentBody
+ * @param {Object} userId
  * @returns {Promise<Accident>}
  */
-const createAccident = async (accidentBody) => {
-  return await Accident.create(
-    accidentBody,
-  );
+const createAccident = async (accidentBody,userId) => {
+  const accidentCre =  await Accident.create({
+    nameAccident:accidentBody.nameAccident,
+    accidentType: accidentBody.accidentType,
+    description: accidentBody.description,
+    latitude: accidentBody.latitude,
+    longitude: accidentBody.longitude,
+    created_by: userId,
+    modified_by: userId
+  });
+  return accidentCre;
 };
 
 /**
@@ -61,15 +69,23 @@ const deleteAccidentById = async (accidentId) => {
 /**
  * update accident id
  * @param {ObjectId} accidentId
+ * @param {ObjectId} userId
  * @param {Object} updateBody
  * @returns {Promise<Accident>}
  */
-const updateAccidentById = async (accidentId, updateBody) => {
+const updateAccidentById = async (accidentId, updateBody,userId) => {
   const accident = await getAccidentById(accidentId);
   if (!accident) {
     throw new ApiError(httpStatus.NOT_FOUND,'Accident not found');
   }
-  Object.assign(accident, updateBody);
+  Object.assign(accident, {
+    nameAccident:updateBody.nameAccident,
+    accidentType: updateBody.accidentType,
+    description: updateBody.description,
+    latitude: updateBody.latitude,
+    longitude: updateBody.longitude,
+    modified_by: userId
+  });
   await  accident.save();
   return accident;
 }

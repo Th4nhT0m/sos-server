@@ -10,18 +10,16 @@ const ApiError = require('../utils/ApiError');
  * @param {Object} accidentTypeBody
  * @returns {Promise<EnforceDocument<T, TMethods>[]>}
  */
-const createAccidentType = async (accidentTypeBody,userid ) => {
-   const crateAccident = await AccidentType.create(
-     accidentTypeBody,
-     accidentTypeBody.created_by = userid,
-     accidentTypeBody.modified_by = userid
-   );
+const createAccidentType = async (userid, accidentTypeBody ) => {
+   const crateAccident = await AccidentType.create({
+     accidentTypeName: accidentTypeBody.accidentTypeName,
+     remark: accidentTypeBody.remark,
+     created_by: userid,
+     modified_by: userid
+   });
   return crateAccident;
 }
-// accidentTypeBody
-// accidentTypeBody: name, status..
-// const FE-name = accidentTypeBody.name
-//
+
 /**
  * Query for Accident Type
  * @param {Object} filter - Mongo filter
@@ -79,7 +77,11 @@ const updateAccidentTypeById = async (accidentTypeId, updateBody, userID) => {
   if (!accidentType) {
     throw new ApiError(httpStatus.NOT_FOUND,'Accident type not found');
   }
-  Object.assign(accidentType, updateBody );
+  Object.assign(    accidentType,{
+    accidentTypeName:updateBody.accidentTypeName,
+    remark: updateBody.remark,
+    modified_by: userID
+  });
   await  accidentType.save();
   return accidentType;
 }

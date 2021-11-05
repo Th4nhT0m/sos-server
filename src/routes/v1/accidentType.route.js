@@ -192,7 +192,6 @@ module.exports = router;
  *                 type: string
  *             example:
  *               accidentTypeName: low
- *               status: Low
  *               remark: low
  *     responses:
  *       "200":

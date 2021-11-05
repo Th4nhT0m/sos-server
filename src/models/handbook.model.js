@@ -23,7 +23,16 @@ const handbookSchema = new Schema({
 
   utensil: {
     type: String,
-  }
+  },
+
+  created_by: {
+    type: mongoose.SchemaTypes.ObjectId,
+  },
+
+  modified_by: {
+    type: mongoose.SchemaTypes.ObjectId,
+  },
+
 
 },{
   timestamps: true,
