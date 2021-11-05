@@ -10,6 +10,10 @@ const detailsAccidentSchema = new Schema({
     ref:'User'
   },
 
+  modified_by:{
+    type: mongoose.SchemaTypes.ObjectId,
+  },
+
   accident: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'accidents'

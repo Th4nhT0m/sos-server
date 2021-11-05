@@ -5,7 +5,7 @@ const ApiError = require('../utils/ApiError');
 const { detailsAccidentServer } = require('../services');
 
 const createDetailsAccident = catchAsync(async (req, res)=> {
-  const detailsAccident = await detailsAccidentServer.createDAccident(req.body);
+  const detailsAccident = await detailsAccidentServer.createDAccident(req.body, req.user.id);
   res.status(httpStatus.CREATED).send(detailsAccident);
 });
 
@@ -25,7 +25,7 @@ const getDetailsAccident = catchAsync(async (req,res)=>{
 });
 
 const updateDetailsAccident = catchAsync(async (req,res)=>{
-  const DAUpdate = await detailsAccidentServer.updateAccidentById(req.params.detailsAccidentId, req.body);
+  const DAUpdate = await detailsAccidentServer.updateAccidentById(req.params.detailsAccidentId, req.body,req.user.id);
   res.send(DAUpdate);
 });
 

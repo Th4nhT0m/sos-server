@@ -45,15 +45,15 @@ components:
         remark:
           type: string
         created_by:
-          type: object
+          type: string
         modified_by:
-          type: object
+          type: string
       example:
         id: 5ebac534954b54139806c112
         accidentTypeName: Low
         remark: Low
         created_by: 617d0805f24fef34b082a161
-        modified_by: modified_by
+        modified_by: 617d0805f24fef34b082a161
 
     Accident:
       type: object
@@ -79,8 +79,8 @@ components:
         nameAccident: be banh
         description: be banh
         accidentType: 4ebac5349s4ba4139806c112
-        latitude: 70.1256
-        longitude: 70.125
+        latitude: "70.12560"
+        longitude: "70.1250"
         created_by: 4ebac5349s4ba4139806c112
         modified_by: 4ebac5349s4ba4139806c112
 

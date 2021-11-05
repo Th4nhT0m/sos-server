@@ -33,6 +33,7 @@ const updateAccidentType = {
   body: Joi.object().keys({
     accidentTypeName: Joi.string(),
     remark: Joi.string(),
+    modified_by: Joi.string().custom(objectId),
   })
     .min(1),
 };

@@ -8,6 +8,8 @@ const createHandbook = {
     icon: Joi.string(),
     content: Joi.string(),
     utensil: Joi.string(),
+    created_by: Joi.string().custom(Object),
+    modified_by: Joi.string().custom(Object),
   }),
 };
 
@@ -38,6 +40,7 @@ const updateHandbook = {
     icon: Joi.string(),
     content: Joi.string(),
     utensil: Joi.string(),
+    modified_by: Joi.string().custom(Object),
   })
     .min(1),
 };

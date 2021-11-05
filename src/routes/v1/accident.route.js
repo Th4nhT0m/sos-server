@@ -74,8 +74,6 @@ module.exports = router;
  *               description: card
  *               latitude: "70.235122"
  *               longitude: "75.235122"
- *               created_by: 615703b8c5678d1ea8f597af
- *               modified_by: 615703b8c5678d1ea8f597af
  *     responses:
  *       "201":
  *         description: Created
@@ -202,11 +200,9 @@ module.exports = router;
  *               modified_by:
  *                 type: string
  *             example:
- *               accidentType: 6157sss5b8c5678d1ea8f597af
+ *               accidentType: 617d7aa311d8ae3034be3309
  *               latitude: "70.235122"
  *               longitude: "75.235122"
- *               created_by: 615703b8c5678d1ea8f597af
- *               modified_by: 615703b8c5678d1ea8f597af
  *     responses:
  *       "201":
  *         description: Created
@@ -288,7 +284,7 @@ module.exports = router;
  *                 type: string
  *             example:
  *               nameAccident: accident card
- *               accidentType: 6157sss5b8c5678d1ea8f597af
+ *               accidentType: 617d7aa311d8ae3034be3309
  *               description: be banh sau
  *               latitude: "70.25698"
  *               longitude: "75.02356"

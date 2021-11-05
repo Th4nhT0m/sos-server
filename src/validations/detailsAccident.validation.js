@@ -5,6 +5,7 @@ const createDetailsAccident = {
   body: Joi.object().keys({
     accident: Joi.string().custom(objectId),
     user: Joi.string().custom(objectId),
+    modified_by: Joi.string().custom(objectId),
     content: Joi.string(),
     timeOut: Joi.date(),
     latitude: Joi.string(),
@@ -17,6 +18,7 @@ const getDetailsAccidents = {
     accident: Joi.string(),
     status: Joi.string(),
     user: Joi.string(),
+    modified_by: Joi.string(),
     latitude: Joi.string(),
     longitude: Joi.string(),
     timeOut: Joi.date(),
@@ -42,6 +44,7 @@ const updateDetailsAccident = {
     timeOut: Joi.date(),
     latitude: Joi.string(),
     longitude: Joi.string(),
+    modified_by: Joi.string().custom(objectId),
   })
     .min(1),
 };
