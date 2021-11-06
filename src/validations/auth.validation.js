@@ -48,6 +48,14 @@ const resetPassword = {
   }),
 };
 
+const changePassword = {
+  body: Joi.object()
+    .keys({
+      password: Joi.string().custom(password),
+    })
+    .min(1),
+}
+
 const verifyEmail = {
   query: Joi.object().keys({
     token: Joi.string().required(),
@@ -62,4 +70,5 @@ module.exports = {
   forgotPassword,
   resetPassword,
   verifyEmail,
+  changePassword,
 };

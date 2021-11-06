@@ -61,6 +61,11 @@ const getCurrentUser = catchAsync(async (req,res)=>{
   res.status(req.user.id).send();
 });
 
+const changePassUser = catchAsync(async (req, res) => {
+  const user = await authService.changePassUser(req.user.id, req.body);
+  res.send(user);
+});
+
 
 module.exports = {
   register,
@@ -71,5 +76,6 @@ module.exports = {
   resetPassword,
   sendVerificationEmail,
   verifyEmail,
-  getCurrentUser
+  getCurrentUser,
+  changePassUser
 };

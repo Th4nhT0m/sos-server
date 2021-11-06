@@ -216,6 +216,11 @@ module.exports = router;
  *             properties:
  *               name:
  *                 type: string
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 minLength: 8
+ *                 description: At least one number and one letter
  *               identityCard:
  *                 type: string
  *               numberPhone:
@@ -229,6 +234,7 @@ module.exports = router;
  *                 type: date
  *             example:
  *               name: fake name
+ *               password: passwords1
  *               identityCard: "125647859632"
  *               numberPhone: "0253468952"
  *               address: "Tây ninh"
