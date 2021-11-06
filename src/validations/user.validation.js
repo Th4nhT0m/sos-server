@@ -42,7 +42,7 @@ const updateUser = {
       identityCard: Joi.string().required(),
       numberPhone: Joi.string().required(),
       address: Joi.string().required(),
-      sex: Joi.string().required().valid('Male','Female','Other'),
+   //   sex: Joi.string().required().valid('Male','Female','Other'),
       dob: Joi.date(),
     })
     .min(1),

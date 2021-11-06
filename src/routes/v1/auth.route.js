@@ -15,7 +15,7 @@ router.post('/reset-password', validate(authValidation.resetPassword), authContr
 router.post('/send-verification-email', auth(), authController.sendVerificationEmail);
 router.get('/verify-email', validate(authValidation.verifyEmail), authController.verifyEmail);
 // router.get('/me', passport.authenticate('jwt', { session: false }), authController.getCurrentUser);
-
+router.patch('/change-password',auth() ,validate(authValidation.changePassword), authController.changePassUser);
 module.exports = router;
 /**
  * @swagger
@@ -276,6 +276,42 @@ module.exports = router;
  *     security:
  *       - bearerAuth: []
  *     responses:
+ *       "204":
+ *         description: No content
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ */
+
+/**
+ * @swagger
+ * /auth/change-password:
+ *   patch:
+ *     summary: change password
+ *     description: change password
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 minLength: 8
+ *                 description: At least one number and one letter
+ *             example:
+ *               password: passwords1
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/User'
  *       "204":
  *         description: No content
  *       "401":
