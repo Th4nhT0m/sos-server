@@ -7,12 +7,11 @@ const app = module.exports.app = express();
 const httpServer = http.createServer(app);
 
 const createSocketIO =(httpServer) => {
-
   const io = new Server(httpServer, {
-    // path: "http://localhost:3500/v1/accidents",
+    path: "/accidents/",
     serveClient: false,
     pingInterval: 10000,
-    pingTimeout: 5000,
+    pingTimeout: 30000,
     cookie: false
   });
 

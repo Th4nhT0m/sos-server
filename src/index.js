@@ -3,14 +3,12 @@ const app = require('./app');
 const {createServer} = require('http')
 const config = require('./config/config');
 const logger = require('./config/logger');
-const io = require('./config/socket');
 const { createSocketIO } = require('./config/socket');
 
 let server;
 let socket;
-// config
-const httServer = createServer(app);
-createSocketIO(httServer);
+const httpServer = createServer(app);
+createSocketIO(httpServer);
 
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info('Connected to MongoDB');
@@ -23,7 +21,7 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   // logger.info(`socket Listening to port ${config.portSocket.portS}`);
   // });
 
-  httServer.listen(config.port,() => {
+  httpServer.listen(config.port,() => {
     console.log(`Server is running at PORT ${config.port}`);
   });
 
