@@ -119,7 +119,7 @@ components:
             type: string
           status:
             type: string
-            enum: [Start,Supporting,End]
+            enum: [Start,Success,Cancel]
           content:
             type: string
           nameAccident:

@@ -64,8 +64,6 @@ const getEmailVerified = async (email) => {
   return user.isEmailVerified;
 };
 
-
-
 /**
  * Update user by id
  * @param {Object} updateBody
