@@ -39,7 +39,7 @@ const updateDetailsAccident = {
     detailsAccidentId: Joi.required().custom(objectId),
   }),
   body: Joi.object().keys({
-    status: Joi.string().valid('Start','Supporting','End'),
+    status: Joi.string().valid('Start','Success','Cancel'),
     content: Joi.string(),
     timeOut: Joi.date(),
     latitude: Joi.string(),

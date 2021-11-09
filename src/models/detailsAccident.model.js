@@ -21,7 +21,7 @@ const detailsAccidentSchema = new Schema({
 
   status: {
     type: String,
-    enum:['Start','Supporting','End'],
+    enum:['Start','Success','Cancel'],
     default: 'Start'
   },
 
