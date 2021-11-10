@@ -30,6 +30,29 @@ const accidentSchema = new Schema({
     default: docker.descriptionContentAccident
   },
 
+  //FE
+  // số người giúp:  0.
+
+  // giao dien list
+  // (BE) staus: start
+  // (FE) Số người giúp:  2(getAll DA).
+
+  //nút : update thành công
+
+  // huỷ
+
+  // BE
+  // đang cần hỗ trợ  create.
+  // thành công       update(nút).
+  // huỷ.             update(nút).
+
+  status:{
+    type: String,
+    enum:['Waiting','Success','Cancel'],
+    default: 'Waiting'
+  },
+
+
   latitude: {
     type: String,
   },

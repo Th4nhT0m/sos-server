@@ -84,7 +84,8 @@ const updateAccidentById = async (accidentId, updateBody,userId) => {
     description: updateBody.description,
     latitude: updateBody.latitude,
     longitude: updateBody.longitude,
-    modified_by: userId
+    modified_by: userId,
+    status: updateBody.status,
   });
   await  accident.save();
   return accident;

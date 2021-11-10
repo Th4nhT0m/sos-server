@@ -119,6 +119,11 @@ module.exports = router;
  *           type: string
  *         description: user name update
  *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [Waiting,Success,Cancel]
+ *       - in: query
  *         name: sortBy
  *         schema:
  *           type: string
@@ -188,6 +193,7 @@ module.exports = router;
  *               - longitude
  *               - created_by
  *               - modified_by
+ *               - status
  *             properties:
  *               accidentType:
  *                 type: string
@@ -278,13 +284,18 @@ module.exports = router;
  *                 type: string
  *               description:
  *                 type: string
+ *               status:
+ *                 type: string
+ *                 enum: [Waiting,Success,Cancel]
  *               latitude:
  *                 type: string
  *               longitude:
  *                 type: string
+ *
  *             example:
  *               nameAccident: accident card
  *               accidentType: 617d7aa311d8ae3034be3309
+ *               status: Success
  *               description: be banh sau
  *               latitude: "70.25698"
  *               longitude: "75.02356"

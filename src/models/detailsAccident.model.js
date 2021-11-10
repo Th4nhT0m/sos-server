@@ -25,6 +25,11 @@ const detailsAccidentSchema = new Schema({
     default: 'Start'
   },
 
+  // start stast
+  // arrived  update(nút)
+  // success update(nút)
+  // Cancel  uupdate (nút)
+
   latitude: {
     type: String,
   },
@@ -32,6 +37,18 @@ const detailsAccidentSchema = new Schema({
   longitude: {
     type: String,
   },
+
+  /*
+  //
+    latitude: {
+    type: String,
+  },
+
+  longitude: {
+    type: String,
+  },
+  //
+   */
 
   content:{
     type: String,
