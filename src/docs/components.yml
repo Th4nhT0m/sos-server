@@ -64,6 +64,9 @@ components:
           type: string
         description:
           type: string
+        status:
+          type: string
+          enum: [ Waiting,Success,Cancel ]
         accidentType:
           type: string
         latitude:
@@ -77,6 +80,7 @@ components:
       example:
         id: 4ebac5349s4ba4139806c112
         nameAccident: be banh
+        status: Waiting
         description: be banh
         accidentType: 4ebac5349s4ba4139806c112
         latitude: "70.12560"

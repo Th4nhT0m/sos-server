@@ -10,7 +10,7 @@ const createAccident = catchAsync(async (req,res) => {
 });
 
 const getAccidents = catchAsync(async (req, res) =>{
-  const filter = pick(req.query, ['nameAccident','accidentType','description','created_by','modified_by'])
+  const filter = pick(req.query, ['nameAccident','accidentType','description','created_by','modified_by','status'])
   const options = pick(req.query,['sortBy','limit','page']);
   const result = await accidentServer.queryAccident(filter, options);
   res.send(result);

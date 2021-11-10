@@ -62,7 +62,7 @@ module.exports = router;
  *               longitude:
  *                 type: string
  *             example:
- *               accident: 6182727ecbe9511174f2ef1e
+ *               accident: 61827279511174f2ef1e
  *               user: 617d0805f24fef34b082a161
  *               content: card
  *               timeOut: 09-06-2021
@@ -106,7 +106,7 @@ module.exports = router;
  *         name: status
  *         schema:
  *           type: string
- *           enum: [Start, Supporting , End]
+ *           enum: [Start, Success, Cancel]
  *         description: status Log
  *       - in: query
  *         name: timeOut
@@ -226,7 +226,7 @@ module.exports = router;
  *             properties:
  *               status:
  *                 type: string
- *                 enum: [Start, Supporting , End]
+ *                 enum: [Start, Success, Cancel]
  *               content:
  *                 type: string
  *               timeOut:
@@ -236,7 +236,7 @@ module.exports = router;
  *               longitude:
  *                 type: string
  *             example:
- *               status: Supporting
+ *               status: Success
  *               content: be banh sau
  *               timeOut: 2021-09-09
  *               latitude: "702.25369"

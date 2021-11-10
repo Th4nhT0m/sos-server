@@ -18,7 +18,7 @@ const createAccident = {
 const createAccidentUrgent = {
   body: Joi.object().keys({
     nameAccident: Joi.string().default(docker.descriptionNameAU),
-    accidentType: Joi.string().default("617d7aa311d8ae3034be3309"),
+    accidentType: Joi.string().custom(Object),
     description: Joi.string().default(docker.descriptionContentAU),
     latitude: Joi.string(),
     longitude: Joi.string(),
@@ -33,6 +33,7 @@ const getAccidents = {
     accidentType: Joi.string(),
     created_by: Joi.string(),
     modified_by: Joi.string(),
+    status: Joi.string().valid('Waiting','Success','Cancel'),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -56,6 +57,7 @@ const updateAccident = {
       latitude: Joi.string(),
       longitude: Joi.string(),
       modified_by: Joi.string().custom(Object),
+      status: Joi.string().valid('Waiting','Success','Cancel'),
   })
       .min(1),
 };
