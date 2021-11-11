@@ -112,7 +112,7 @@ components:
         content: băng lại
         utensil: băng
 
-    DetailsAccident:
+    Helper:
         type: object
         properties:
           id:
@@ -128,9 +128,13 @@ components:
             type: string
           nameAccident:
             type: string
-          latitude:
+          helperLatitude:
             type: string
-          longitude:
+          helperLongitude:
+            type: string
+          accidentLatitude:
+            type: string
+          accidentLongitude:
             type: string
           timeOut:
             type: date
@@ -139,8 +143,10 @@ components:
           user: 615704b89e78551a588d220f
           accident: 615703b8c5678d1ea8f597af
           status: Start
-          latitude: "70.235122"
-          longitude: "75.235122"
+          helperLatitude: "70.235122"
+          helperLongitude: "75.235122"
+          accidentLatitude: "25.0253"
+          accidentLongitude: "26.25636"
           content: hu xe
           timeOut: 09-09-2021
 

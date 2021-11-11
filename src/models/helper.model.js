@@ -3,7 +3,7 @@ const { toJSON, paginate } = require('./plugins');
 const Schema = mongoose.Schema
 const docker = require('../config/docker')
 
-const detailsAccidentSchema = new Schema({
+const helperSchema = new Schema({
 
   user: {
     type: mongoose.SchemaTypes.ObjectId,
@@ -30,11 +30,19 @@ const detailsAccidentSchema = new Schema({
   // success update(nút)
   // Cancel  uupdate (nút)
 
-  latitude: {
+  helperLatitude: {
     type: String,
   },
 
-  longitude: {
+  helperLongitude: {
+    type: String,
+  },
+
+  accidentLatitude: {
+    type: String,
+  },
+
+  accidentLongitude: {
     type: String,
   },
 
@@ -65,9 +73,9 @@ const detailsAccidentSchema = new Schema({
 /**
  * @typedef detailsAccident
  */
-detailsAccidentSchema.plugin(toJSON);
-detailsAccidentSchema.plugin(paginate);
+helperSchema.plugin(toJSON);
+helperSchema.plugin(paginate);
 
 
-const DetailsAccident = mongoose.model('DetailsAccident',detailsAccidentSchema);
-module.exports = DetailsAccident;
+const Helper = mongoose.model('Helper',helperSchema);
+module.exports = Helper;
