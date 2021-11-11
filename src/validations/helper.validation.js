@@ -1,65 +1,71 @@
 const Joi = require('joi');
 const { objectId } = require("./custom.validation")
 
-const createDetailsAccident = {
+const createHelper = {
   body: Joi.object().keys({
     accident: Joi.string().custom(objectId),
     user: Joi.string().custom(objectId),
     modified_by: Joi.string().custom(objectId),
     content: Joi.string(),
     timeOut: Joi.date(),
-    latitude: Joi.string(),
-    longitude: Joi.string(),
+    helperLatitude: Joi.string(),
+    helperLongitude: Joi.string(),
+    accidentLatitude: Joi.string(),
+    accidentLongitude: Joi.string(),
   }),
 };
 
-const getDetailsAccidents = {
+const getHelpers = {
   query: Joi.object().keys({
     accident: Joi.string(),
     status: Joi.string().valid('Start','Success','Cancel'),
     user: Joi.string(),
     modified_by: Joi.string(),
-    latitude: Joi.string(),
-    longitude: Joi.string(),
     timeOut: Joi.date(),
+    helperLatitude: Joi.string(),
+    helperLongitude: Joi.string(),
+    accidentLatitude: Joi.string(),
+    accidentLongitude: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
   }),
 };
 
-const getDetailsAccident = {
+const getHelper = {
   params: Joi.object().keys({
-    detailsAccidentId: Joi.string().custom(objectId),
+    HelperId: Joi.string().custom(objectId),
   }),
 };
 
-const updateDetailsAccident = {
+const updateHelper  = {
   params: Joi.object().keys({
-    detailsAccidentId: Joi.required().custom(objectId),
+    HelperId: Joi.required().custom(objectId),
   }),
   body: Joi.object().keys({
     status: Joi.string().valid('Start','Success','Cancel'),
     content: Joi.string(),
     timeOut: Joi.date(),
-    latitude: Joi.string(),
-    longitude: Joi.string(),
+    helperLatitude: Joi.string(),
+    helperLongitude: Joi.string(),
+    accidentLatitude: Joi.string(),
+    accidentLongitude: Joi.string(),
     modified_by: Joi.string().custom(objectId),
   })
     .min(1),
 };
 
-const deleteDetailsAccident = {
+const deleteHelper  = {
   params: Joi.object().keys({
-    detailsAccidentId: Joi.required().custom(objectId),
+    HelperId: Joi.required().custom(objectId),
   }),
 };
 
 module.exports = {
-  createDetailsAccident,
-  getDetailsAccidents,
-  getDetailsAccident,
-  updateDetailsAccident,
-  deleteDetailsAccident
+  createHelper ,
+  getHelpers,
+  getHelper ,
+  updateHelper ,
+  deleteHelper
 }
 
