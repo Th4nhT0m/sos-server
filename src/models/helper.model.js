@@ -21,7 +21,7 @@ const helperSchema = new Schema({
 
   status: {
     type: String,
-    enum:['Start','Success','Cancel'],
+    enum:['Start', 'Arrived', 'Success', 'Cancel'],
     default: 'Start'
   },
 
