@@ -114,7 +114,7 @@ module.exports = router;
  *         name: status
  *         schema:
  *           type: string
- *           enum: [Start, Success, Cancel]
+ *           enum: [Start, Arrived, Success, Cancel]
  *         description: status Log
  *       - in: query
  *         name: timeOut
@@ -243,7 +243,7 @@ module.exports = router;
  *             properties:
  *               status:
  *                 type: string
- *                 enum: [Start, Success, Cancel]
+ *                 enum: [Start, Arrived, Success, Cancel]
  *               content:
  *                 type: string
  *               timeOut:

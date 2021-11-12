@@ -18,7 +18,7 @@ const createHelper = {
 const getHelpers = {
   query: Joi.object().keys({
     accident: Joi.string(),
-    status: Joi.string().valid('Start','Success','Cancel'),
+    status: Joi.string().valid('Start','Arrived','Success','Cancel'),
     user: Joi.string(),
     modified_by: Joi.string(),
     timeOut: Joi.date(),
@@ -43,7 +43,7 @@ const updateHelper  = {
     HelperId: Joi.required().custom(objectId),
   }),
   body: Joi.object().keys({
-    status: Joi.string().valid('Start','Success','Cancel'),
+    status: Joi.string().valid('Start','Arrived','Success','Cancel'),
     content: Joi.string(),
     timeOut: Joi.date(),
     helperLatitude: Joi.string(),
