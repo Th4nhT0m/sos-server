@@ -32,6 +32,15 @@ const getHelpers = {
   }),
 };
 
+const getHelperByIdAccident = {
+  query: Joi.object().keys({
+    accident: Joi.string().custom(objectId),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
+}
+
 const getHelper = {
   params: Joi.object().keys({
     HelperId: Joi.string().custom(objectId),
@@ -66,6 +75,7 @@ module.exports = {
   getHelpers,
   getHelper ,
   updateHelper ,
-  deleteHelper
+  deleteHelper,
+  getHelperByIdAccident
 }
 

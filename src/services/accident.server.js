@@ -44,6 +44,23 @@ const getAccidentById = async (id) =>{
 };
 
 /**
+ /**
+ * Query for accident
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @param {ObjectId} id
+ * @returns {Promise<QueryResult>}
+ */
+
+const getAccidentByUserId = async (filter,options) =>{
+  return await Accident.paginate(filter,options);
+};
+
+
+/**
  * Get accident by status
  * @param {string}  status
  * @returns {Promise<Accident>}
@@ -97,5 +114,6 @@ module.exports = {
   getAccidentByStatus,
   deleteAccidentById,
   updateAccidentById,
-  queryAccident
+  queryAccident,
+  getAccidentByUserId,
 };

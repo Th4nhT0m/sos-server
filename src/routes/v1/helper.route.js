@@ -12,6 +12,10 @@ router
   .get(auth('Users'), validate(helperValidation.getHelpers), helperController.getHelpers);
 
 router
+  .route('/accidentID')
+  .get(auth('Users'), validate(helperValidation.getHelperByIdAccident), helperController.getHelperByIdAccident);
+
+router
   .route('/:HelperId')
   .get(auth('Users'), validate(helperValidation.getHelper), helperController.getHelper)
   .patch(auth('Users'), validate(helperValidation.updateHelper), helperController.updateHelper)
@@ -189,6 +193,41 @@ module.exports = router;
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *
+ *
+ */
+
+
+/**
+ * @swagger
+ * /helpers/accidentID:
+ *   get:
+ *     summary: Get details accidents by id accident
+ *     description: user can retrieve all details accident.
+ *     tags: [helper]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: accident
+ *         schema:
+ *           type: string
+ *         description: accident
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 results:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Helper'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  */
 
 /**

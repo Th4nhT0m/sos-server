@@ -16,6 +16,10 @@ router
   .post(auth('Users'), validate(accidentValidation.createAccidentUrgent), accidentController.createAccident);
 
 router
+  .route('/myAccident')
+  .get(auth('Users'),validate(accidentValidation.getAccident),accidentController.getAccidentByUserId);
+
+router
   .route('/:accidentId')
   .get(auth('Users'), validate(accidentValidation.getAccident), accidentController.getAccident)
   .patch(auth('Users'), validate(accidentValidation.updateAccident), accidentController.updateAccident)
@@ -172,6 +176,8 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  */
 
+
+
 /**
  * @swagger
  * /accidents/Urgent:
@@ -226,6 +232,30 @@ module.exports = router;
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *
+ */
+
+/**
+ * @swagger
+ * /accidents/myAccident:
+ *   get:
+ *     summary: get accident by user id
+ *     description: get accident.
+ *     tags: [Accidents]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Accident'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
  */
 
 /**

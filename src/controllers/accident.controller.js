@@ -16,6 +16,16 @@ const getAccidents = catchAsync(async (req, res) =>{
   res.send(result);
 })
 
+const getAccidentByUserId = catchAsync(async (req,res) =>{
+  const filter = pick(req.query,['created_by']);
+  const options = pick(req.query,['sortBy','limit','page']);
+  const accident = await accidentServer.getAccidentByUserId(filter,options);
+  if(!accident) {
+    throw new ApiError(httpStatus.NOT_FOUND,'Accident not found');
+  }
+  res.send(accident);
+})
+
 const getAccident = catchAsync(async (req, res) => {
   const accident = await  accidentServer.getAccidentById(req.params.accidentId);
   if(!accident){
@@ -39,5 +49,6 @@ module.exports = {
   getAccidents,
   getAccident,
   updateAccident,
-  deleteAccident
+  deleteAccident,
+  getAccidentByUserId,
 }
