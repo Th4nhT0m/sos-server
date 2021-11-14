@@ -16,6 +16,13 @@ const getHelpers = catchAsync(async (req, res) =>{
   res.send(result);
 });
 
+const getHelperByIdAccident = catchAsync(async (req, res) =>{
+  const filter = pick(req.query,['accident']);
+  const options = pick(req.query, ['sortBy','limit','page']);
+  const result = await helperServer.queryHelper(filter,options);
+  res.send(result);
+});
+
 const getHelper = catchAsync(async (req,res)=>{
   const Helper = await helperServer.getHelperById(req.params.HelperId);
   if(!Helper){
@@ -39,5 +46,6 @@ module.exports = {
   getHelpers,
   getHelper,
   updateHelper,
-  deleteHelper
+  deleteHelper,
+  getHelperByIdAccident
 }
