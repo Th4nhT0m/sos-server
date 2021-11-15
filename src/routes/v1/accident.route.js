@@ -17,7 +17,7 @@ router
 
 router
   .route('/myAccident')
-  .get(auth('Users'),validate(accidentValidation.getAccident),accidentController.getAccidentByUserId);
+  .get(auth('Users'),validate(accidentValidation.getAccidents),accidentController.getAccidentByUserId);
 
 router
   .route('/:accidentId')

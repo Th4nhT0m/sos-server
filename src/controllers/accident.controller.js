@@ -3,6 +3,7 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { accidentServer } = require('../services');
+const { use } = require('express/lib/router');
 
 const createAccident = catchAsync(async (req,res) => {
   const accident = await accidentServer.createAccident(req.body, req.user.id);
@@ -17,9 +18,8 @@ const getAccidents = catchAsync(async (req, res) =>{
 })
 
 const getAccidentByUserId = catchAsync(async (req,res) =>{
-  const filter = pick(req.query,['created_by']);
   const options = pick(req.query,['sortBy','limit','page']);
-  const accident = await accidentServer.getAccidentByUserId(filter,options);
+  const accident = await accidentServer.getAccidentByUserId(req.user.id,options);
   if(!accident) {
     throw new ApiError(httpStatus.NOT_FOUND,'Accident not found');
   }

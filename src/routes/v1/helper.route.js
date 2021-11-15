@@ -16,6 +16,10 @@ router
   .get(auth('Users'), validate(helperValidation.getHelperByIdAccident), helperController.getHelperByIdAccident);
 
 router
+  .route('/myHelper')
+  .get(auth('Users'), validate(helperValidation.getHelpers), helperController.getHelperByUserId);
+
+router
   .route('/:HelperId')
   .get(auth('Users'), validate(helperValidation.getHelper), helperController.getHelper)
   .patch(auth('Users'), validate(helperValidation.updateHelper), helperController.updateHelper)
@@ -229,6 +233,31 @@ module.exports = router;
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  */
+
+/**
+ * @swagger
+ * /helpers/myHelper:
+ *   get:
+ *     summary: get helper by user id
+ *     description: get helper.
+ *     tags: [helper]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Helper'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ */
+
 
 /**
  * @swagger
