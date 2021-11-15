@@ -23,6 +23,12 @@ const getHelperByIdAccident = catchAsync(async (req, res) =>{
   res.send(result);
 });
 
+const getHelperByUserId = catchAsync(async (req,res)=>{
+  const options = pick(req.query, ['sortBy','limit','page']);
+  const result = await helperServer.getHelperByUserId(req.user.id,options);
+  res.send(result);
+});
+
 const getHelper = catchAsync(async (req,res)=>{
   const Helper = await helperServer.getHelperById(req.params.HelperId);
   if(!Helper){
@@ -47,5 +53,6 @@ module.exports = {
   getHelper,
   updateHelper,
   deleteHelper,
-  getHelperByIdAccident
+  getHelperByIdAccident,
+  getHelperByUserId,
 }

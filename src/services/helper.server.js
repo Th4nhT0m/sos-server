@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const { Helper } = require('../models');
 const ApiError = require('../utils/ApiError');
+const { filter } = require('compression');
 
 /**
  * Create a Helper
@@ -44,6 +45,20 @@ const queryHelper = async (filter, options) => {
 const getHelperById = async (id) =>{
   return Helper.findById(id);
 };
+
+/**
+ * Query for Helper
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @returns {Promise<QueryResult>}
+ */
+const getHelperByUserId = async (filter,options) =>{
+  let result = await Helper.paginate({user:filter},options)
+  return result;
+}
 
 /**
  * Get Helper by statusLog
@@ -101,5 +116,6 @@ module.exports = {
   getHelperByStatus,
   deleteHelperById,
   updateHelperById,
+  getHelperByUserId,
 };
 
