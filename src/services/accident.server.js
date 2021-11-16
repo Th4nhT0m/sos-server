@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const { Accident } = require('../models');
 const ApiError = require('../utils/ApiError');
+const Joi = require('joi');
 
 /**
  * Create a accident
@@ -16,7 +17,9 @@ const createAccident = async (accidentBody,userId) => {
     latitude: accidentBody.latitude,
     longitude: accidentBody.longitude,
     created_by: userId,
-    modified_by: userId
+    modified_by: userId,
+    createTime: Date.now(),
+    UpdateTime: Date.now()
   });
   return accidentCre;
 };
@@ -103,6 +106,7 @@ const updateAccidentById = async (accidentId, updateBody,userId) => {
     longitude: updateBody.longitude,
     modified_by: userId,
     status: updateBody.status,
+    UpdateTime: Date.now(),
   });
   await  accident.save();
   return accident;

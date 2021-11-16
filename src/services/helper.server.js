@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 const { Helper } = require('../models');
 const ApiError = require('../utils/ApiError');
 const { filter } = require('compression');
+const Joi = require('joi');
 
 /**
  * Create a Helper
@@ -19,7 +20,9 @@ const createHelper = async (HelperBody,userId) => {
     helperLatitude: HelperBody.helperLatitude,
     helperLongitude: HelperBody.helperLongitude,
     accidentLatitude: HelperBody.accidentLatitude,
-    accidentLongitude: HelperBody.accidentLongitude
+    accidentLongitude: HelperBody.accidentLongitude,
+    createTime: Date.now(),
+    UpdateTime: Date.now(),
   });
   return HelperBodyCre;
 };
@@ -103,7 +106,8 @@ const updateHelperById = async (HelperId, updateBody,userId) => {
     helperLatitude: updateBody.helperLatitude,
     helperLongitude: updateBody.helperLongitude,
     accidentLatitude: updateBody.accidentLatitude,
-    accidentLongitude: updateBody.accidentLongitude
+    accidentLongitude: updateBody.accidentLongitude,
+    UpdateTime: Date.now(),
   });
   await  updateHelper.save();
   return updateHelper;

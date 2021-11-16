@@ -61,8 +61,14 @@ const accidentSchema = new Schema({
     type: String,
   },
 
-},{
-  timestamps: true,
+  createTime:{
+    type: Date,
+  },
+
+  UpdateTime:{
+    type: Date,
+  },
+
 });
 /**
  * @typedef Accident

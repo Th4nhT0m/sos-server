@@ -200,7 +200,6 @@ module.exports = router;
  *
  */
 
-
 /**
  * @swagger
  * /helpers/accidentID:
