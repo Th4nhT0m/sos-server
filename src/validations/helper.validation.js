@@ -12,6 +12,8 @@ const createHelper = {
     helperLongitude: Joi.string(),
     accidentLatitude: Joi.string(),
     accidentLongitude: Joi.string(),
+    createTime: Joi.date(),
+    UpdateTime:Joi.date(),
   }),
 };
 
@@ -60,6 +62,7 @@ const updateHelper  = {
     accidentLatitude: Joi.string(),
     accidentLongitude: Joi.string(),
     modified_by: Joi.string().custom(objectId),
+    UpdateTime:Joi.date(),
   })
     .min(1),
 };

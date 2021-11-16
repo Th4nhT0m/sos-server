@@ -67,8 +67,14 @@ const helperSchema = new Schema({
     type: Date
   },
 
-},{
-  timestamps: true,
+  createTime:{
+    type: Date,
+  },
+
+  UpdateTime:{
+    type: Date,
+  },
+
 });
 /**
  * @typedef detailsAccident

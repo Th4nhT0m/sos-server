@@ -12,6 +12,8 @@ const createAccident = {
     longitude: Joi.string(),
     created_by: Joi.string().custom(Object),
     modified_by: Joi.string().custom(Object),
+    createTime:Joi.date(),
+    UpdateTime:Joi.date(),
   }),
 };
 
@@ -24,6 +26,8 @@ const createAccidentUrgent = {
     longitude: Joi.string(),
     created_by: Joi.string().custom(Object),
     modified_by: Joi.string().custom(Object),
+    createTime:Joi.date(),
+    UpdateTime:Joi.date(),
   }),
 }
 
@@ -56,6 +60,7 @@ const updateAccident = {
       description: Joi.string(),
       latitude: Joi.string(),
       longitude: Joi.string(),
+      UpdateTime:Joi.date(),
       modified_by: Joi.string().custom(Object),
       status: Joi.string().valid('Waiting','Success','Cancel'),
   })
