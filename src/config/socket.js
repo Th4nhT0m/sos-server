@@ -1,12 +1,15 @@
+const mongoose = require('mongoose');;
+const {createServer} = require('http')
 const express = require('express');
+const server = express();
+const httpServer = createServer(server);
 const { Server } = require("socket.io");
-const http = require('http');
-const app = module.exports.app = express();
-const httpServer = http.createServer(app);
+
+
 
 const createSocketIO =(httpServer) => {
   const io = new Server(httpServer, {
-   // path: "/accidents/",
+    // path: "/accidents/",
     serveClient: false,
     pingInterval: 10000,
     pingTimeout: 30000,
@@ -21,7 +24,7 @@ const createSocketIO =(httpServer) => {
     // });
   });
 
- // io.use()
+  // io.use()
   io.engine.on("connection_error", (err) => {
     console.log(err.req);      // the request object
     console.log(err.code);     // the error code, for example 1
@@ -30,8 +33,35 @@ const createSocketIO =(httpServer) => {
   });
 }
 
+
 module.exports = {
   createSocketIO,
 };
 
 
+// const mongoose = require('mongoose');
+// const app = require('./app');
+// const {createServer} = require('http')
+// const config = require('./config/config');
+// const logger = require('./config/logger');
+// const express = require('express');
+// const server = express();
+// const httpServer = createServer(server);
+// const { Server } = require("socket.io");
+// const io = new Server(httpServer);
+//
+//
+// mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
+//   logger.info('Connected to MongoDB');
+//
+//   httpServer.listen(config.port,() => {
+//     console.log(`Server is running at PORT ${config.port}`);
+//   });
+//   // io.on('connection', (socket) => {
+//   //   console.log('a user connected');
+//   // });
+//   //
+//   // server.listen(3000, () => {
+//   //   console.log('listening on *:3000');
+//   // });
+// });
