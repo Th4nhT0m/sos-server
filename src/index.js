@@ -18,8 +18,18 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
     console.log(`Server is running at PORT ${config.port}`);
   });
   ConnectSocket.on('connection', (ConnectSocket)=>{
-    console.log('user connected'  );
+    console.log(ConnectSocket.id);
   });
+  ConnectSocket.on('helper', (ConnectSocket)=>{
+    console.log('Helper'+ConnectSocket.id);
+  });
+  // ConnectSocket.on('getAllAccidents',() => {
+  //   ConnectSocket.emit('setAllAccidents',()=>{
+  //     console.log('123');
+  //   })
+  //
+  // });
+
   http.listen(3000, () => {
     console.log('connected to port: ' + 3000)
 
