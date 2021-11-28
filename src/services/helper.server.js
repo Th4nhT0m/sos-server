@@ -41,6 +41,19 @@ const queryHelper = async (filter, options) => {
 }
 
 /**
+ * Query for Helper
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @returns {Promise<QueryResult>}
+ */
+const queryHelperByAccidentId = async (filter, options) => {
+  return Helper.paginate(filter,options);
+}
+
+/**
  * Get Helper by id
  * @param {ObjectId} id
  * @returns {Promise<Accident>}
@@ -59,7 +72,7 @@ const getHelperById = async (id) =>{
  * @returns {Promise<QueryResult>}
  */
 const getHelperByUserId = async (filter,options) =>{
-  let result = await Helper.paginate({user:filter},options)
+  let result = await Helper.paginate({user:filter},options);
   return result;
 }
 
@@ -121,5 +134,6 @@ module.exports = {
   deleteHelperById,
   updateHelperById,
   getHelperByUserId,
+  queryHelperByAccidentId,
 };
 

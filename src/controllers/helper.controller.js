@@ -19,7 +19,7 @@ const getHelpers = catchAsync(async (req, res) =>{
 const getHelperByIdAccident = catchAsync(async (req, res) =>{
   const filter = pick(req.query,['accident']);
   const options = pick(req.query, ['sortBy','limit','page']);
-  const result = await helperServer.queryHelper(filter,options);
+  const result = await helperServer.queryHelperByAccidentId(filter,options);
   res.send(result);
 });
 

@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 
+
 const paginate = (schema) => {
   /**
    * @typedef {Object} QueryResult
@@ -37,7 +38,7 @@ const paginate = (schema) => {
     const skip = (page - 1) * limit;
 
     const countPromise = this.countDocuments(filter).exec();
-    let docsPromise = this.find(filter).sort(sort).skip(skip).limit(limit);
+    let docsPromise = this.find(filter).sort(sort).skip(skip).limit(limit).populate('user',['name','numberPhone','address']).populate('created_by',['name','numberPhone']);
 
     if (options.populate) {
       options.populate.split(',').forEach((populateOption) => {
