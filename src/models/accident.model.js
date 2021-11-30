@@ -52,7 +52,6 @@ const accidentSchema = new Schema({
     default: 'Waiting'
   },
 
-
   latitude: {
     type: String,
   },

@@ -43,7 +43,7 @@ const queryAccident = async (filter, options) => {
  * @returns {Promise<Accident>}
  */
 const getAccidentById = async (id) =>{
-  return Accident.findById(id);
+  return Accident.findById(id).populate('created_by',['name','numberPhone']);
 };
 
 /**

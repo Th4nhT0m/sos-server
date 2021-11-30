@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Helper } = require('../models');
+const { Helper, Accident } = require('../models');
 const ApiError = require('../utils/ApiError');
 const { filter } = require('compression');
 const Joi = require('joi');
@@ -11,19 +11,26 @@ const Joi = require('joi');
  * @returns {Promise<Helper>}
  */
 const createHelper = async (HelperBody,userId) => {
-  const HelperBodyCre = Helper.create({
-    accident: HelperBody.accident,
-    user: userId,
-    modified_by: userId,
-    content: HelperBody.content,
-    timeOut: HelperBody.timeOut,
-    helperLatitude: HelperBody.helperLatitude,
-    helperLongitude: HelperBody.helperLongitude,
-    accidentLatitude: HelperBody.accidentLatitude,
-    accidentLongitude: HelperBody.accidentLongitude,
-    createTime: Date.now(),
-    UpdateTime: Date.now(),
-  });
+  // let HelperBodyCre;
+  // console.log(HelperBody.accident);
+  // const ac = Accident.findById(HelperBody.accident);
+  // console.log();
+  // console.log(userId);
+  // id user accident - id
+  // if(HelperBody.accident.created_by === userId) {
+    const HelperBodyCre = Helper.create({
+      accident: HelperBody.accident,
+      user: userId,
+      modified_by: userId,
+      content: HelperBody.content,
+      timeOut: HelperBody.timeOut,
+      helperLatitude: HelperBody.helperLatitude,
+      helperLongitude: HelperBody.helperLongitude,
+      accidentLatitude: HelperBody.accidentLatitude,
+      accidentLongitude: HelperBody.accidentLongitude,
+      createTime: Date.now(),
+      UpdateTime: Date.now(),
+    });
   return HelperBodyCre;
 };
 
@@ -38,6 +45,19 @@ const createHelper = async (HelperBody,userId) => {
  */
 const queryHelper = async (filter, options) => {
   return await Helper.paginate(filter,options);
+}
+
+/**
+ * Query for Helper
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @returns {Promise<QueryResult>}
+ */
+const queryHelperByAccidentId = async (filter, options) => {
+  return Helper.paginate(filter,options);
 }
 
 /**
@@ -59,7 +79,7 @@ const getHelperById = async (id) =>{
  * @returns {Promise<QueryResult>}
  */
 const getHelperByUserId = async (filter,options) =>{
-  let result = await Helper.paginate({user:filter},options)
+  let result = await Helper.paginate({user:filter},options);
   return result;
 }
 
@@ -121,5 +141,6 @@ module.exports = {
   deleteHelperById,
   updateHelperById,
   getHelperByUserId,
+  queryHelperByAccidentId,
 };
 

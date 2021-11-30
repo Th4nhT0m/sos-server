@@ -15,10 +15,12 @@ const accidentTypeSchema = new Schema( {
 
   created_by: {
     type: mongoose.SchemaTypes.ObjectId,
+    ref:'User'
   },
 
   modified_by: {
     type: mongoose.SchemaTypes.ObjectId,
+    ref:'User'
   },
 
 },{
