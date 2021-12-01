@@ -4,6 +4,7 @@ const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { accidentServer } = require('../services');
 const { use } = require('express/lib/router');
+const { socket } = require('../index');
 
 const createAccident = catchAsync(async (req,res) => {
   const accident = await accidentServer.createAccident(req.body, req.user.id);
@@ -14,6 +15,7 @@ const getAccidents = catchAsync(async (req, res) =>{
   const filter = pick(req.query, ['nameAccident','accidentType','description','created_by','modified_by','status'])
   const options = pick(req.query,['sortBy','limit','page']);
   const result = await accidentServer.queryAccident(filter, options);
+  // socket.emit('getAccidents', result);
   res.send(result);
 })
 
