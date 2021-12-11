@@ -17,7 +17,6 @@ const verifyCallback = (req, resolve, reject, requiredRights) => async (err, use
       return reject(new ApiError(httpStatus.FORBIDDEN, 'Forbidden'));
     }
   }
-
   resolve();
 };
 
