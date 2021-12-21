@@ -58,7 +58,7 @@ const createAccident = async (accidentBody,userId) => {
     createTime: Date.now(),
     UpdateTime: Date.now()
   });
-  notificationAccident(token);
+  // notificationAccident(token);
   return accidentCre;
 };
 
