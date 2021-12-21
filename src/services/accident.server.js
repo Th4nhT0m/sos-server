@@ -6,8 +6,10 @@ const admin = require('firebase-admin');
 const { notificationAccident, notificationAccidentSuccess } = require('../utils/notification');
 
 
+
 const token = "dwiF8FvwRGuM-w6q2N0waY:APA91bFhUrYkB_K5hpE1A0TMNAdyMv_c93Ofq-1tYQbcLqPaTUm45ET2HX5ZRA1YIf2uiaNZhXdRmDE4DPKkoc6dUYSONF96UP7QAY-hburqVBXBWjuqA-evYRlHttlA1QDG6bSGhWWZ";
 const tokenB = "dznT53IVQVSlW9L-wqf247:APA91bEc5ERHXkF5mSWiizWF2OIJBlguJIB6qDCWxKL2pzlLM0ZS_I_Bne4uReqwnA1jVSoP7EWCrKBRh7_5vbqIqAOd82hIoB3vHyBDaFKITEhXHWnFLPtiAOs4ShsJUszLHqsMdq0u";
+
 
 /**
  * Create a accident

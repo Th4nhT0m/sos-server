@@ -11,6 +11,8 @@ const notificationAccident = (token) => {
       databaseURL: "dB_URL"
     });
   }
+
+
   admin.messaging().send({
     token: token,
     data: {
