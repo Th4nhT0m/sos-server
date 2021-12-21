@@ -3,6 +3,7 @@ const { Helper, Accident } = require('../models');
 const ApiError = require('../utils/ApiError');
 const { filter } = require('compression');
 const Joi = require('joi');
+const io = require('socket.io');
 
 /**
  * Create a Helper
@@ -11,14 +12,7 @@ const Joi = require('joi');
  * @returns {Promise<Helper>}
  */
 const createHelper = async (HelperBody,userId) => {
-  // let HelperBodyCre;
-  // console.log(HelperBody.accident);
-  // const ac = Accident.findById(HelperBody.accident);
-  // console.log();
-  // console.log(userId);
-  // id user accident - id
-  // if(HelperBody.accident.created_by === userId) {
-    const HelperBodyCre = Helper.create({
+  const HelperBodyCre = Helper.create({
       accident: HelperBody.accident,
       user: userId,
       modified_by: userId,

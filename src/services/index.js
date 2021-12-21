@@ -6,4 +6,3 @@ module.exports.accidentServer = require('./accident.server');
 module.exports.helperServer = require('./helper.server');
 module.exports.handbookServer = require('./handbook.server');
 module.exports.accidentTypeServer = require('./accidentType.server');
-module.exports.socketServer = require('./socket.server');

@@ -4,4 +4,3 @@ module.exports.Accident = require('./accident.model');
 module.exports.Helper = require('./helper.model');
 module.exports.Handbook = require('./handbook.model');
 module.exports.AccidentType = require('./accidentType.models');
-module.exports.Socket = require('./socket.model');

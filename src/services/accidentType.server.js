@@ -2,8 +2,6 @@ const httpStatus = require('http-status');
 const { AccidentType } = require('../models');
 const ApiError = require('../utils/ApiError');
 
-
-// BUG
 /**
  * Create a Accident Type
  * @param {Object} userid
