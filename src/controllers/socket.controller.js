@@ -8,7 +8,6 @@ const httpSocket = createServer(app);
 const socket = io(httpSocket);
 const {so} = require('../index');
 
-
 const createSocketCon = catchAsync(async (req, res) => {
   // socket.on('connection', (socket) => {
      console.log('A user is connected' +so);
