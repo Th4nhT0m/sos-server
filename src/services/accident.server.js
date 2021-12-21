@@ -2,42 +2,11 @@ const httpStatus = require('http-status');
 const { Accident } = require('../models');
 const ApiError = require('../utils/ApiError');
 const Joi = require('joi');
-const admin = require('firebase-admin');
-const serviceAccount = require('../../pushnotification-c067b-firebase-adminsdk-vqd0z-024311f747.json');
 
-/**
- * notification accident
- */
-const notificationAccident = (token) =>{
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-  });
-  const a = Math.floor(Math.random() * 3);
-  console.log(a);
-  // const token = "ey3rNVtGTsOmby14PDIZnL:APA91bG2onCD0J3xxTY46mQ00bO46bZXgjiSwXM3CBLx8hX2fx_WllXKFR8OIynZ268kph-wM0R4Xky5IAfoCBKYbHk5iNTCLc-nQWRyPKJSh9eptIm-w_FS4iPoLgeuKeJi4hEhjOBW";
-  admin.messaging().send({
-    token: token,
-    data:{
-      customData:"Deneme",
-      id: a.toString(),
-      ad:"Accident",
-      subTitle:"Got into an accident and need your help"
-    },
-    android:{
-      notification:{
-        body: "Got into an accident and need your help",
-        title:"Accident",
-        color:"#fff566",
-        priority:"high",
-        sound:"default",
-        vibrateTimingsMillis:[200,500,800],
-        imageUrl:"https://cdn-icons-png.flaticon.com/512/2125/2125190.png",
-      }
-    }
-  }).then((msg)=>{
-    console.log(msg);
-  })
-}
+const token = "dwiF8FvwRGuM-w6q2N0waY:APA91bFhUrYkB_K5hpE1A0TMNAdyMv_c93Ofq-1tYQbcLqPaTUm45ET2HX5ZRA1YIf2uiaNZhXdRmDE4DPKkoc6dUYSONF96UP7QAY-hburqVBXBWjuqA-evYRlHttlA1QDG6bSGhWWZ";
+const tokenB = "dznT53IVQVSlW9L-wqf247:APA91bEc5ERHXkF5mSWiizWF2OIJBlguJIB6qDCWxKL2pzlLM0ZS_I_Bne4uReqwnA1jVSoP7EWCrKBRh7_5vbqIqAOd82hIoB3vHyBDaFKITEhXHWnFLPtiAOs4ShsJUszLHqsMdq0u";
+
+const { notificationAccident, notificationAccidentSuccess } = require('../utils/notification');
 
 /**
  * Create a accident
@@ -46,8 +15,8 @@ const notificationAccident = (token) =>{
  * @returns {Promise<Accident>}
  */
 const createAccident = async (accidentBody,userId) => {
-  const token = "ey3rNVtGTsOmby14PDIZnL:APA91bG2onCD0J3xxTY46mQ00bO46bZXgjiSwXM3CBLx8hX2fx_WllXKFR8OIynZ268kph-wM0R4Xky5IAfoCBKYbHk5iNTCLc-nQWRyPKJSh9eptIm-w_FS4iPoLgeuKeJi4hEhjOBW";
-  const accidentCre =  await Accident.create({
+    notificationAccident(token);
+    const accidentCre =  await Accident.create({
     nameAccident:accidentBody.nameAccident,
     accidentType: accidentBody.accidentType,
     description: accidentBody.description,
@@ -136,6 +105,7 @@ const updateAccidentById = async (accidentId, updateBody,userId) => {
   if (!accident) {
     throw new ApiError(httpStatus.NOT_FOUND,'Accident not found');
   }
+  notificationAccidentSuccess(token);
   Object.assign(accident, {
     nameAccident:updateBody.nameAccident,
     accidentType: updateBody.accidentType,
