@@ -18,7 +18,7 @@ const tokenB = "dznT53IVQVSlW9L-wqf247:APA91bEc5ERHXkF5mSWiizWF2OIJBlguJIB6qDCWx
  * @returns {Promise<Accident>}
  */
 const createAccident = async (accidentBody,userId) => {
-  notificationAccident(token);
+  notificationAccident(tokenB);
   const accidentCreate =  await Accident.create({
     nameAccident:accidentBody.nameAccident,
     accidentType: accidentBody.accidentType,
@@ -102,7 +102,7 @@ const deleteAccidentById = async (accidentId) => {
  */
 const updateAccidentById = async (accidentId, updateBody,userId) => {
   const accident = await getAccidentById(accidentId);
-   notificationAccidentSuccess(token);
+   notificationAccidentSuccess(tokenB);
   if (!accident) {
     throw new ApiError(httpStatus.NOT_FOUND,'Accident not found');
   }

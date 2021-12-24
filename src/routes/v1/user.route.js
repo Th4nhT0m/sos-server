@@ -9,7 +9,7 @@ const router = express.Router();
 router
   .route('/')
   .post(auth('manageUsers'), validate(userValidation.createUser), userController.createUser)
-  .get(auth('getUsers'), validate(userValidation.getUsers), userController.getUsers);
+  .get(auth('Users'), validate(userValidation.getUsers), userController.getUsers);
 
 router
   .route('/me')
@@ -18,6 +18,10 @@ router
 router
   .route('/update')
   .patch(auth('Users'), validate(userValidation.updateUser), userController.updateUser)
+
+router
+  .route('/updateRank/:userId')
+  .patch(auth('Users'), validate(userValidation.updateRankUser), userController.updateRankUser)
 
 router
   .route('/:userId')
@@ -256,6 +260,53 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
+ */
+
+/**
+ * @swagger
+ * /users/updateRank/{id}:
+ *   patch:
+ *     summary: Update Rank a user By Id
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: User id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               ranking:
+ *                 type: string
+ *               countedHelps:
+ *                 type: string
+ *             example:
+ *               ranking: 0
+ *               countedHelps: 0
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/User'
+ *       "400":
+ *         $ref: '#/components/responses/DuplicateEmail'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
  */
 
 

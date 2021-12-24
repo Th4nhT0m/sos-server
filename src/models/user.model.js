@@ -11,10 +11,22 @@ const userSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    identityCard:{
+    identityCard: {
       type: String,
       unique:true,
       required:true
+    },
+    ranking: {
+      type: Number,
+      default: 0
+    },
+    countedHelps: {
+      type: Number,
+      default: 0
+    },
+    isValidIdCard: {
+      type: Boolean,
+      default: false
     },
     numberPhone:{
       type: String,
