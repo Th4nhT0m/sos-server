@@ -286,11 +286,8 @@ module.exports = router;
  *             properties:
  *               ranking:
  *                 type: string
- *               countedHelps:
- *                 type: string
  *             example:
  *               ranking: 0
- *               countedHelps: 0
  *     responses:
  *       "200":
  *         description: OK
@@ -308,7 +305,6 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  */
-
 
 /**
  * @swagger

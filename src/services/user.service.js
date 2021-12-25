@@ -96,11 +96,11 @@ const updateRankUser = async (userId, updateRank) => {
   if (!rank) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  const resultRanking = (updateRank.ranking + rank.ranking);
-  const resultHelps = (updateRank.countedHelps * rank.ranking + updateRank.ranking)/(rank.countedHelps + 1) ;
+  const resultCountHelps = rank.countedHelps + 1;
+  const resultRanking = (rank.countedHelps * rank.ranking + updateRank.ranking)/(rank.countedHelps + 1) ;
   Object.assign(rank, {
     ranking: resultRanking,
-    countedHelps: resultHelps,
+    countedHelps: resultCountHelps,
   });
   await rank.save();
   return rank;
