@@ -19,6 +19,8 @@ const getUsers = {
   query: Joi.object().keys({
     name: Joi.string(),
     role: Joi.string(),
+    ranking: Joi.number(),
+    countedHelps: Joi.number(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -32,9 +34,6 @@ const getUser = {
 };
 
 const updateUser = {
-  // params: Joi.object().keys({
-  //   userId: Joi.required().custom(objectId),
-  // }),
   body: Joi.object()
     .keys({
       name: Joi.string(),
@@ -42,11 +41,26 @@ const updateUser = {
       identityCard: Joi.string().required(),
       numberPhone: Joi.string().required(),
       address: Joi.string().required(),
-   //   sex: Joi.string().required().valid('Male','Female','Other'),
+   // sex: Joi.string().required().valid('Male','Female','Other'),
       dob: Joi.date(),
+      ranking: Joi.number(),
+      countedHelps: Joi.number(),
+      isValidIdCard: Joi.boolean(),
     })
     .min(1),
 };
+
+const updateRankUser = {
+  params: Joi.object().keys({
+    userId: Joi.required().custom(objectId),
+  }),
+  body: Joi.object()
+    .keys({
+      ranking: Joi.number(),
+      countedHelps: Joi.number(),
+    })
+    .min(1),
+}
 
 const deleteUser = {
   params: Joi.object().keys({
@@ -60,4 +74,5 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
+  updateRankUser,
 };

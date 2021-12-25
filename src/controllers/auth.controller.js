@@ -6,12 +6,9 @@ const ApiError = require('../utils/ApiError');
 const register = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
   const tokens = await tokenService.generateAuthTokens(user);
-
   const verifyEmailToken = await tokenService.generateVerifyEmailToken(user);
   await emailService.sendVerificationEmail(user.email, verifyEmailToken);
-
   res.status(httpStatus.NO_CONTENT).send();
-
   res.status(httpStatus.CREATED).send({ user, tokens });
 });
 

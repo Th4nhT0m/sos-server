@@ -24,6 +24,12 @@ components:
           enum: [ Male, Female, Other ]
         dob:
           type: date
+        ranking:
+          type: number
+        countedHelps:
+          type: number
+        isValidIdCard:
+          type: number
       example:
         id: 5ebac534954b54139806c112
         email: fake@example.com
@@ -34,6 +40,9 @@ components:
         role: user
         address: Tây ninh
         dob: 2021-09-09
+        ranking: 0
+        countedHelps: 0
+        isValidIdCard: false
 
     AccidentType:
       type: object

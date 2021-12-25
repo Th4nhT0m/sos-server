@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const { User } = require('../models');
 const ApiError = require('../utils/ApiError');
+const async = require('async');
 
 /**
  * Create a user
@@ -39,7 +40,8 @@ const queryUsers = async (filter, options) => {
  * @returns {Promise<User>}
  */
 const getUserById = async (id) => {
-  return User.findById(id);
+  const findUser = User.findById(id);
+  return findUser;
 };
 
 /**
@@ -66,6 +68,7 @@ const getEmailVerified = async (email) => {
 
 /**
  * Update user by id
+ * @param userId
  * @param {Object} updateBody
  * @returns {Promise<User>}
  */
@@ -81,6 +84,27 @@ const updateUserById = async (userId, updateBody) => {
   await user.save();
   return user;
 };
+
+/**
+ * Update rank user by id
+ * @param userId
+ * @param {Object} updateRank
+ * @returns {Promise<User>}
+ */
+const updateRankUser = async (userId, updateRank) => {
+  const rank = await getUserById(userId);
+  if (!rank) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
+  const resultCountHelps = rank.countedHelps + 1;
+  const resultRanking = (rank.countedHelps * rank.ranking + updateRank.ranking)/(rank.countedHelps + 1) ;
+  Object.assign(rank, {
+    ranking: resultRanking,
+    countedHelps: resultCountHelps,
+  });
+  await rank.save();
+  return rank;
+}
 
 /**
  * Delete user by id
@@ -103,5 +127,6 @@ module.exports = {
   getUserByEmail,
   updateUserById,
   deleteUserById,
-  getEmailVerified
+  getEmailVerified,
+  updateRankUser
 };
